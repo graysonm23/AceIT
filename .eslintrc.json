@@ -9,7 +9,7 @@
     "react": true
   },
   "plugins": ["jasmine"],
-  "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "globals": {
     "process": true,
     "Atomics": "readonly",
