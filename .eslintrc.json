@@ -5,7 +5,8 @@
     "jquery": true,
     "es6": true,
     "browser": true,
-    "mocha": true
+    "mocha": true,
+    "react": true
   },
   "plugins": ["jasmine"],
   "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
