@@ -4,6 +4,7 @@ var jwt = require("jsonwebtoken");
 var mailgun = require("mailgun-js");
 var saltRounds = 10;
 var crypto = require("crypto");
+
 require("dotenv").config();
 
 module.exports = function(app) {
@@ -54,8 +55,6 @@ module.exports = function(app) {
                 res.json({ token: token, message: "success" });
               }
             );
-
-            // res.render("userprofile", { msg: "Email has been sent" });
           }
         });
       } else {
