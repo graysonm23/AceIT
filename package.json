@@ -15,6 +15,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.1",
+    "react-strap": "0.0.1",
     "reactstrap": "^8.4.1"
   },
   "scripts": {

@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 var jwt = require("jsonwebtoken");
 var db = require("./models/UserSchema");
 const PORT = process.env.PORT || 3001;
-
+const MONGODB_URI = process.env.MONGODB_URI;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

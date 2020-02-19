@@ -1,3 +1,5 @@
 module.exports = {
-  User: require("./UserSchema")
+  User: require("./UserSchema"),
+  Board: require("./BoardSchema"),
+  Button: require("./ButtonSchema")
 };
