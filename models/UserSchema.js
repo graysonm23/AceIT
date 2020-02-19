@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var userSchema = new Schema({});
+let userSchema = new Schema({});
 
 const User = mongoose.model("User", userSchema);
 
