@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import ImgCard from './components/card';
+import ImgCard from "./components/card";
 
 function App() {
   return (
