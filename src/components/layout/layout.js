@@ -44,6 +44,7 @@ class layout extends Component {
             </Container>
         );
     }
+}
 
-    export default Example;
+export default layout;
 
