@@ -17,6 +17,7 @@ module.exports = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      new_user: true
     })
       .then(dbModel => {
         console.log("This is res.body: ", res.body);
