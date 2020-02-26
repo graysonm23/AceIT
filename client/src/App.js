@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ImgCard from './components/card';
+import login from './components/login';
+import Nav from './components/navbar';
 
 function App() {
   return (
-    <div className="App">
-      <ImgCard />
-    </div>
+    <Router>
+      <Nav></Nav>
+      <Switch>
+        <Route exact path="/" component={ImgCard} />
+        <Route path="/login" component={login} />
+      </Switch>
+    </Router>
   );
 }
 
