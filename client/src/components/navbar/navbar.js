@@ -9,6 +9,8 @@ import {
   NavLink
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "../../images/aceitLogo.png";
+import "./navbar.css";
 
 const links = [
   { href: "/", text: "Home" },
@@ -21,8 +23,8 @@ const links = [
   { href: "/login", text: "LOGIN" }
 ];
 
-const createNavItem = ({ href, text, className }) => (
-  <NavItem>
+const createNavItem = ({ href, text, className, index }) => (
+  <NavItem key={index}>
     <NavLink href={href} className={className}>
       {text}
     </NavLink>
@@ -48,9 +50,11 @@ export default class Example extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <div key="navdiv">
+        <Navbar id="nav" color="light" light expand="md">
+          <NavbarBrand href="/">
+            <img id="logo" alt="Logo" src={logo} />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
