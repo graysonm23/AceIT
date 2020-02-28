@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+.mr-auto {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+=======
 #logo {
   height: 40px;
   width: 150px;
@@ -6,3 +32,4 @@
 #nav {
   max-height: 10vh;
 }
+>>>>>>> 72b01406927f6754ad37a2e15c24b215b686125c

@@ -19,8 +19,12 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+<<<<<<< HEAD
+    "reactstrap": "^8.4.1"
+=======
     "reactstrap": "^8.4.1",
     "uploadcare-widget": "^3.8.3"
+>>>>>>> 72b01406927f6754ad37a2e15c24b215b686125c
   },
   "scripts": {
     "start": "react-scripts start",

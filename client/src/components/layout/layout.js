@@ -1,7 +1,7 @@
 import React from 'react';
 import "./layout.css";
 import { Container, Row, Col } from 'reactstrap';
-import navbar from "./navbar";
+
 
 
 class layout extends Component {
@@ -47,4 +47,3 @@ class layout extends Component {
 }
 
 export default layout;
-
