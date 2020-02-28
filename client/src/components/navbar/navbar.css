@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .mr-auto {
     list-style-type: none;
     margin: 0;
@@ -22,3 +23,13 @@
   li a:hover {
     background-color: #111;
   }
+=======
+#logo {
+  height: 40px;
+  width: 150px;
+}
+
+#nav {
+  max-height: 10vh;
+}
+>>>>>>> 72b01406927f6754ad37a2e15c24b215b686125c

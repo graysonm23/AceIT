@@ -17,6 +17,7 @@ module.exports = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      new_user: true
     })
       .then(dbModel => {
         console.log("This is res.body: ", res.body);
@@ -30,5 +31,5 @@ module.exports = {
     db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
+  }
 };
