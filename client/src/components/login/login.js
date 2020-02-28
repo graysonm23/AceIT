@@ -3,7 +3,8 @@ import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const Example = (props) => {
     return (
-        <div class="Form">
+
+        <Form>
             <Row form>
                 <Col md={6}>
                     <FormGroup>
@@ -14,8 +15,9 @@ const Example = (props) => {
                         </div>
                     </FormGroup>
 
-
                 </Col>
+
+
                 <Col md={6}>
                     <FormGroup>
                         <Label for="examplePassword"><i class="fas fa-unlock-alt"></i>Password</Label>
@@ -27,8 +29,8 @@ const Example = (props) => {
             </Row>
 
             <Button>Login</Button>
-            <Form />
-        </div>
+        </Form>
+
     );
 }
 
