@@ -1,17 +1,6 @@
-.Form {
-background-color: blue;    
+.loginForm{ 
 margin: 0;
 padding: 0;
 font-family: sans-serif;
+background: #34495e !important;
 }
-
-.Form:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: #03a9f4; 
-}
-
