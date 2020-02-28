@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -67,7 +68,7 @@ function jwtVerify(req, res, next) {
 }
 
 // Connect to the Mongo DB with heroku or local
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aceit");
+mongoose.connect(MONGODB_URI || "mongodb://localhost/aceit");
 
 // Start the API server
 app.listen(PORT, function() {

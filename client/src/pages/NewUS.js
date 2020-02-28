@@ -18,8 +18,10 @@ function Home() {
     event.preventDefault();
     console.log("images ", image);
     if (image.length) {
-      API.saveBook({ image })
-        .then(res => {})
+      API.saveImage({ image })
+        .then(res => {
+          console.log(res);
+        })
         .catch(err => console.log("Unable to save image ", err));
     }
   };
