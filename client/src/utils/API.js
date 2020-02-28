@@ -1,6 +1,10 @@
 import axios from "axios";
 const BaseUrl = process.env.REACT_APP_API;
 export default {
+  saveImage: function(imageData) {
+    console.log(imageData);
+    return axios.post("/api/signin/", imageData);
+  },
   // Gets all books from Google Books API
   getBooks: function(value) {
     console.log(BaseUrl);
