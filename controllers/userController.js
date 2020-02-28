@@ -17,11 +17,11 @@ module.exports = {
       res.json(dbFindEmail);
     })
   },
-  create: function(req, res) {
+  create: function(req, res, hash) {
     db.User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
       new_user: true
     })
       .then(dbUserCreate => {

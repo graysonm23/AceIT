@@ -54,7 +54,21 @@ router
      const promise = userController.findByEmail;
      await promise;
     }
-  
+  });
+
+
+  router.route("/api/auth/signup").post(function(req, res){
+        const saltRounds = 10;
+        const myPlaintextPassword = req.body.password;
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+          bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+            if (err) {
+              throw err;
+            } else {
+              userController.create(hash);
+            }
+          })
+        })
   })
 
 function parseToken(request, response, next) {
