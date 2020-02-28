@@ -65,7 +65,7 @@ function Profile() {
                   <h2>Profile Picture</h2>
                 </CardTitle>
                 <CardBody className="userCardBody">
-                  <div id="widget">
+                  <div id="userPWidget">
                     {image.length ? (
                       <div className="imgDiv">
                         <label htmlFor="file">Change Image:</label>
