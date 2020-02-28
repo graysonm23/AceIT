@@ -11,7 +11,7 @@ const Example = (props) => {
                             <Label for="exampleEmail"><i class="fas fa-user"></i>Email</Label>
 
                             <div class="input-box">
-                                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                                <Input type="email" name="email" id="exampleEmail" placeholder="Please place email address here" />
                             </div>
                         </FormGroup>
 
@@ -22,7 +22,7 @@ const Example = (props) => {
                         <FormGroup>
                             <Label for="examplePassword"><i class="fas fa-unlock-alt"></i>Password</Label>
                             <div class="input-box">
-                                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                                <Input type="password" name="password" id="examplePassword" placeholder="Please place password here" />
                             </div>
                         </FormGroup>
                     </Col>
