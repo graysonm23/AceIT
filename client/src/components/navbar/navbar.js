@@ -15,7 +15,7 @@ import "./navbar.css";
 const links = [
   { href: "/", text: "Home" },
   { href: "/card", text: "Card" },
-  { href: "#about", text: "About" },
+  { href: "/signup", text: "Signup" },
   { href: "#cata", text: "Categories" },
   { href: "#test", text: "Blogs" },
   { href: "#test2", text: "News" },
