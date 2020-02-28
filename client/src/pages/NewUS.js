@@ -28,7 +28,7 @@ function Home() {
   return (
     <div className="homepage">
       <Container className="homeContainer">
-        <Row>
+        <Row className="homeRow">
           <Col className="homeCol">
             <Card className="homeCard">
               <CardBody>
