@@ -10,7 +10,7 @@ import {
     Row,
     Col
 } from "reactstrap";
-// import "./card.css";
+import "./card.css";
 import "../navbar/navbar";
 import "../navbar/index";
 import icon from "../../images/activityIcon.png";
@@ -60,14 +60,14 @@ const dummyArr = [
 
 const ImgCard = props => {
     return (
-        <div class="container">
+        <div class="container-fluid cardStyle">
             <Row>
                 {dummyArr.map(cardItem => {
                     return (
                         <Col md={3}>
                             <Card>
                                 <CardImg top src={cardItem.icon} alt=""></CardImg>
-                                <CardBody>
+                                <CardBody class="bodyCard" style={{ backgroundColor: "teal" }}>
                                     <CardTitle>{cardItem.title}</CardTitle>
                                     <CardSubtitle></CardSubtitle>
                                     <CardText> </CardText>
