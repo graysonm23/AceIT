@@ -34,7 +34,23 @@ router
   .post(function(req, res){
     
     async () => {
-      
+      bcrypt.compare(req.body.password, dbUsers.password, function(
+        //compare hashed password
+        err,
+        response
+      ) { 
+        if(err){console.log(err)}
+        else{
+          jwt.sign(
+            { user: user },
+            process.env.SECRET_KEY,
+            { expiresIn: "10 days" } /*sets token to expire in 30 seconds*/,
+            function(err, token) {
+              res.json({ token: token, message: "success" });
+            }
+          ).catch(console.log(err));
+        }
+      });
      const promise = userController.findByEmail;
      await promise;
     }
