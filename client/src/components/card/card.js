@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import {
     Card,
@@ -20,17 +19,6 @@ import {
     FormGroup,
     CustomInput,
     FormText
-=======
-import React from "react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
->>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
 } from "reactstrap";
 import "./card.css";
 import "../navbar/navbar";
@@ -38,7 +26,6 @@ import "../navbar/index";
 import icon from "../../images/activityIcon.png";
 import icon2 from "../../images/goalicon.png";
 import icon3 from "../../images/homeicon.png";
-<<<<<<< HEAD
 import icon4 from "../../images/yes-icon.png";
 import icon5 from "../../images/no-icon.png";
 import icon6 from "../../images/run-icon.png";
@@ -196,77 +183,6 @@ const ImgCard = props => {
 };
 
 export default ImgCard;
-=======
-
-const ImgCard = props => {
-  return (
-    <div className="card">
-      <div className="container">
-        <Card>
-          <CardImg top width="35%" src={icon2} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Goals</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText> </CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg top width="35%" src={icon} alt=""></CardImg>
-          <CardBody>
-            <CardTitle> Activity</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
->>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
 
 
 
-<<<<<<< HEAD
-=======
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-      </div>
-    </div>
-  );
-};
-
-export default ImgCard;
->>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -38,52 +37,3 @@ const Example = (props) => {
 }
 
 export default Example;
-=======
-import React from "react";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
-
-const Example = props => {
-  return (
-    <Form>
-      <Row form>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="exampleEmail">
-              <i className="fas fa-user"></i>Email
-            </Label>
-
-            <div className="input-box">
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="with a placeholder"
-              />
-            </div>
-          </FormGroup>
-        </Col>
-
-        <Col md={6}>
-          <FormGroup>
-            <Label for="examplePassword">
-              <i className="fas fa-unlock-alt"></i>Password
-            </Label>
-            <div className="input-box">
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="password placeholder"
-              />
-            </div>
-          </FormGroup>
-        </Col>
-      </Row>
-
-      <Button>Login</Button>
-    </Form>
-  );
-};
-
-export default Example;
->>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
