@@ -1,0 +1,91 @@
+.userProfile {
+  background-color: #0addbf;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+.userCol {
+  width: 100%;
+  background: none;
+  text-align: center;
+}
+.userCard {
+  height: 350px;
+  width: 400px;
+  margin: 60px;
+  position: relative;
+  float: left;
+}
+#userPWidget {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+.userPicture {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.userRow {
+  height: 100%;
+}
+.userSettingsContainer {
+  height: 100vh;
+  background-color: white;
+  position: relative;
+}
+#userSave {
+  border: none;
+  background-color: #5882e7;
+  margin: 0 auto;
+}
+#userSave:hover {
+  background-color: #3891ff !important;
+}
+.userCreateButton {
+  border: none;
+  background-color: #5882e7;
+  position: absolute;
+  bottom: 0;
+  right: 35%;
+  margin: 0 auto;
+}
+.userCreateButton:hover {
+  background-color: #3891ff !important;
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+.inputName,
+.inputEmail,
+.inputPassword {
+  border: none;
+  outline: none;
+  cursor: default;
+}
+.inputName:focus,
+.inputEmail:focus,
+.inputPassword:focus {
+  border: none;
+  outline: none;
+  cursor: default;
+}
+.toggle-password {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  bottom: 7px;
+  cursor: pointer;
+}
+.inputPassword {
+  position: relative;
+}
+.comingSoonHeader {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  color: gray;
+}

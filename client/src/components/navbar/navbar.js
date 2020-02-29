@@ -17,7 +17,7 @@ const links = [
   { href: "/card", text: "Card" },
   { href: "/signup", text: "Signup" },
   { href: "/settings", text: "Settings" },
-  { href: "#cata", text: "Categories" },
+  { href: "/userprofile", text: "User Profile" },
   { href: "#test", text: "Blogs" },
   { href: "#test2", text: "News" },
   { href: "#busns", text: "Adds", className: "btnadd" },
