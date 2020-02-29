@@ -17,8 +17,8 @@ import icon3 from "../../images/homeicon.png";
 
 const ImgCard = props => {
   return (
-    <div class="card">
-      <div class="container">
+    <div className="card">
+      <div className="container">
         <Card>
           <CardImg top width="35%" src={icon2} alt=""></CardImg>
           <CardBody>

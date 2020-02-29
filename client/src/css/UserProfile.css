@@ -9,12 +9,17 @@
   background: none;
   text-align: center;
 }
+.wrapperDiv {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .userCard {
-  height: 350px;
-  width: 400px;
-  margin: 60px;
-  position: relative;
-  float: left;
+  min-height: 350px;
+  min-width: 400px;
+  max-height: 350px;
+  max-width: 400px;
+  margin: 20px 0px 20px 0px;
 }
 #userPWidget {
   position: absolute;
@@ -88,4 +93,11 @@
   right: 50%;
   transform: translate(50%, -50%);
   color: gray;
+}
+.toggle-editor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #3891ff;
+  font-size: 24px;
 }

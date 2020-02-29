@@ -12,7 +12,8 @@ import {
   ListGroup,
   ListGroupItem,
   InputGroup,
-  Input
+  Input,
+  Form
 } from "reactstrap";
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
@@ -20,214 +21,216 @@ import { Widget } from "@uploadcare/react-widget";
 function Profile() {
   const [image, setImage] = useState([]);
   const [boards, setBoards] = useState([]);
-  const [user, setUser] = useState([]);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [editor, setEditor] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   useEffect(() => {
     imageDidMount();
   });
   const imageDidMount = () => {
-    API.getBooks(image)
-      .then(res => {
-        console.log(res.data.items);
-        console.log(res.data);
-        setImage(res.data);
-      })
-      .catch(err => console.log(err));
+    // API.getBooks(image)
+    //   .then(res => {
+    //     console.log(res.data.items);
+    //     console.log(res.data);
+    //     setImage(res.data);
+    //   })
+    //   .catch(err => console.log(err));
   };
   const handleImageSubmit = event => {
     event.preventDefault();
     console.log("images ", image);
-    if (image.length) {
-      API.saveImage({ image })
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => console.log("Unable to save image ", err));
-    }
+    // if (image.length) {
+    //   API.saveImage({ image })
+    //     .then(res => {
+    //       console.log(res);
+    //     })
+    //     .catch(err => console.log("Unable to save image ", err));
+    // }
+  };
+  const nameHandler = string => {
+    let s = string.split(/(?<=^\S+)\s/);
+    string = s[0];
+    return string;
+  };
+  const handleUserInfoSubmit = event => {
+    event.preventDefault();
+    setEditor(false);
+    console.log(name, password, email);
   };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+  const toggleEditor = () => {
+    setEditor(!editor);
   };
   return (
     <div className="userProfile">
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
-            {user.length ? (
-              <h1>{user.name}'s Settings</h1>
+            {name.length ? (
+              <h1>{nameHandler(name)}'s Settings</h1>
             ) : (
               <h1>My Settings</h1>
             )}
-
-            <Card className="userCard">
-              <CardBody className="userCardBody">
-                <CardTitle className="userCardTitle">
-                  <h2>Profile Picture</h2>
-                </CardTitle>
+            <div className="wrapperDiv">
+              <Card className="userCard">
                 <CardBody className="userCardBody">
-                  <div id="userPWidget">
-                    {image.length ? (
-                      <div className="imgDiv">
-                        <label htmlFor="file">Change Image:</label>
-                        <img
-                          className="userPicture"
-                          alt="user pic"
-                          src={image}
-                        />
-                      </div>
+                  <CardTitle className="userCardTitle">
+                    <h2>Profile Picture</h2>
+                  </CardTitle>
+                  <CardBody className="userCardBody">
+                    <div id="userPWidget">
+                      {image.length ? (
+                        <div className="imgDiv">
+                          <img
+                            className="userPicture"
+                            alt="user pic"
+                            src={image}
+                          />
+                        </div>
+                      ) : (
+                        ""
+                      )}
+
+                      <Widget
+                        publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
+                        id="userFile"
+                        onFileSelect={file => {
+                          console.log("File changed: ", file);
+
+                          if (file) {
+                            file.progress(info =>
+                              console.log("File progress: ", info.progress)
+                            );
+                            file.done(info => {
+                              console.log("File uploaded: ", info);
+                              setImage([info.originalUrl]);
+                            });
+                          }
+                        }}
+                      />
+                    </div>
+                  </CardBody>
+                </CardBody>
+                <Button id="userSave" onClick={handleImageSubmit} type="submit">
+                  Save Image
+                </Button>
+              </Card>
+              <Card className="userCard">
+                <CardBody className="userCardBody">
+                  <CardTitle className="userCardTitle"></CardTitle>
+                  {boards.length > 0 ? (
+                    <h2 className="boardsHeader">Your Boards</h2>
+                  ) : (
+                    <div className="boardsHeader">
+                      <h2>You have no boards right now</h2>
+                      <Button className="userCreateButton">Create One!</Button>
+                    </div>
+                  )}
+                  <CardBody className="userCardBody">
+                    {boards.length ? (
+                      <ListGroup>
+                        {boards.map((board, index) => (
+                          <ListGroupItem key={board}>
+                            <Card key={index + 1}>
+                              <CardImg
+                                style={{
+                                  maxHeight: 100,
+                                  maxWidth: 100,
+                                  margin: 20
+                                }}
+                                top
+                                width="100%"
+                                src={board.image}
+                                alt="Card image cap"
+                              />
+                              <CardBody key={index + 2}>
+                                <Button>Delete</Button>
+                              </CardBody>
+                            </Card>
+                          </ListGroupItem>
+                        ))}
+                      </ListGroup>
                     ) : (
                       ""
                     )}
-
-                    <Widget
-                      publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
-                      id="userFile"
-                      onFileSelect={file => {
-                        console.log("File changed: ", file);
-
-                        if (file) {
-                          file.progress(info =>
-                            console.log("File progress: ", info.progress)
-                          );
-                          file.done(info => {
-                            console.log("File uploaded: ", info);
-                            setImage([info.originalUrl]);
-                          });
-                        }
-                      }}
-                    />
-                  </div>
+                  </CardBody>
                 </CardBody>
-              </CardBody>
-              <Button id="userSave" onClick={handleImageSubmit} type="submit">
-                Save Image
-              </Button>
-            </Card>
-            <Card className="userCard">
-              <CardBody className="userCardBody">
-                <CardTitle className="userCardTitle"></CardTitle>
-                {boards.length > 0 ? (
-                  <h2 className="boardsHeader">Your Boards</h2>
-                ) : (
-                  <div className="boardsHeader">
-                    <h2>You have no boards right now</h2>
-                    <Button className="userCreateButton">Create One!</Button>
-                  </div>
-                )}
+              </Card>
+              <Card className="userCard">
                 <CardBody className="userCardBody">
-                  {boards.length ? (
-                    <ListGroup>
-                      {boards.map((board, index) => (
-                        <ListGroupItem key={board}>
-                          <Card key={index + 1}>
-                            <CardImg
-                              style={{
-                                maxHeight: 100,
-                                maxWidth: 100,
-                                margin: 20
-                              }}
-                              top
-                              width="100%"
-                              src={board.image}
-                              alt="Card image cap"
-                            />
-                            <CardBody key={index + 2}>
-                              <Button>Delete</Button>
-                            </CardBody>
-                          </Card>
-                        </ListGroupItem>
-                      ))}
-                    </ListGroup>
-                  ) : (
-                    ""
-                  )}
-                </CardBody>
-              </CardBody>
-            </Card>
-            <Card className="userCard">
-              <CardBody className="userCardBody">
-                <CardTitle className="userCardTitle">
-                  <h2>{user.name} Information</h2>
-                </CardTitle>
-                <CardBody className="userCardBody">
-                  {user.length ? (
-                    <ListGroup>
-                      {user.map((user, index) => (
-                        <div>
-                          <InputGroup className="inputGroup">
-                            <label>Name: </label>
-                            <Input
-                              readOnly
-                              className="inputName"
-                              value={user.name}
-                              type="name"
-                            />
-                            <label>Email: </label>
-                            <Input
-                              readOnly
-                              className="inputEmail"
-                              value={user.email}
-                              type="email"
-                            />
-                            <label>Password: </label>
-                            <Input
-                              readOnly
-                              className="inputPassword"
-                              value={user.password}
-                              type={passwordVisible ? "text" : "password"}
-                            />
-                            <span
-                              onClick={togglePasswordVisibility}
-                              toggle="#password-field"
-                              class="fa fa-fw fa-eye field-icon toggle-password"
-                            ></span>
-                          </InputGroup>
-                        </div>
-                      ))}
-                    </ListGroup>
-                  ) : (
+                  <CardTitle className="userCardTitle">
+                    <h2>{name} Information</h2>
+                  </CardTitle>
+                  <CardBody className="userCardBody">
                     <div>
-                      <InputGroup className="inputGroup">
-                        <label>Name: </label>
-                        <Input
-                          readOnly
-                          className="inputName"
-                          value={"name"}
-                          type="name"
-                        />
-                        <label>Email: </label>
-                        <Input
-                          readOnly
-                          className="inputEmail"
-                          value={"email"}
-                          type="email"
-                        />
-                        <label>Password: </label>
-                        <Input
-                          readOnly
-                          className="inputPassword"
-                          value={"password"}
-                          type={passwordVisible ? "text" : "password"}
-                        />
-                        <span
-                          onClick={togglePasswordVisibility}
-                          toggle="#password-field"
-                          class="fa fa-fw fa-eye field-icon toggle-password"
-                        ></span>
-                      </InputGroup>
+                      <Form onSubmit={handleUserInfoSubmit}>
+                        <InputGroup
+                          autoComplete="new-password"
+                          className="inputGroup"
+                        >
+                          <span
+                            tabIndex={0}
+                            onClick={toggleEditor}
+                            class="fas fa-pen-square toggle-editor"
+                          ></span>
+                          <label>Name: </label>
+                          <Input
+                            autoComplete="new-password"
+                            autoCapitalize="on"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputName"
+                            onChange={e => setName(e.target.value)}
+                            value={name}
+                            type="name"
+                          />
+                          <label>Email: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputEmail"
+                            onChange={e => setEmail(e.target.value)}
+                            value={email}
+                            type="email"
+                          />
+                          <label>Password: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputPassword"
+                            onChange={e => setPassword(e.target.value)}
+                            value={password}
+                            type={passwordVisible ? "text" : "password"}
+                          />
+                          <span
+                            tabIndex={0}
+                            onFocus={togglePasswordVisibility}
+                            toggle="#password-field"
+                            className="fa fa-fw fa-eye field-icon toggle-password"
+                          ></span>
+                        </InputGroup>
+                        {editor ? (
+                          <Button onClick={handleUserInfoSubmit}>Save</Button>
+                        ) : (
+                          ""
+                        )}
+                      </Form>
                     </div>
-                  )}
+                  </CardBody>
                 </CardBody>
-              </CardBody>
-            </Card>
-            <Card className="userCard">
-              <CardBody className="userCardBody">
-                <CardTitle className="userCardTitle">
-                  <h2 className="comingSoonHeader">More Coming Soon!</h2>
-                </CardTitle>
-                <CardBody className="userCardBody"></CardBody>
-              </CardBody>
-            </Card>
+              </Card>
+              <Card className="userCard">
+                <CardBody className="userCardBody">
+                  <CardTitle className="userCardTitle">
+                    <h2 className="comingSoonHeader">More Coming Soon!</h2>
+                  </CardTitle>
+                  <CardBody className="userCardBody"></CardBody>
+                </CardBody>
+              </Card>
+            </div>
           </Col>
         </Row>
       </Container>

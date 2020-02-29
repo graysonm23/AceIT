@@ -15,12 +15,18 @@ import {
   input,
   Button
 } from "reactstrap";
+import API from "../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
   const handleSubmit = event => {
     event.preventDefault();
     console.log(event);
+    API.saveBook(email)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log("Unable to save email ", err));
   };
   return (
     <div className="homepage">
