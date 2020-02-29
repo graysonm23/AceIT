@@ -12,6 +12,7 @@ import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
+import Home from "./pages/NewUS";
 import dashboard from "./pages/dashboard";
 >>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
 
