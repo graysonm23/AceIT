@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import "../css/signup.css";
 import {
   Container,
@@ -14,12 +15,19 @@ import {
   input,
   Button
 } from "reactstrap";
+import API from "../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
   const handleEmailSubmit = event => {
     event.preventDefault();
+    axios.post("/api/auth/signup");
     console.log(event);
+    API.saveBook(email)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log("Unable to save email ", err));
   };
   return (
     <div className="homepage">
@@ -50,6 +58,8 @@ function Signup() {
                         <h4 className="signupSubtitle">Enter your Email</h4>{" "}
                       </label>
                       <input
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
                         className="col s-12 signup-input"
                         type="email"
                         name="email"

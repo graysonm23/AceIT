@@ -1,37 +1,47 @@
-import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import React from "react";
+import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-const Example = (props) => {
-    return (
+const Example = props => {
+  return (
+    <Form>
+      <Row form>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="exampleEmail">
+              <i className="fas fa-user"></i>Email
+            </Label>
 
-        <Form>
-            <Row form>
-                <Col md={6}>
-                    <FormGroup>
-                        <Label for="exampleEmail"><i class="fas fa-user"></i>Email</Label>
+            <div className="input-box">
+              <Input
+                type="email"
+                name="email"
+                id="exampleEmail"
+                placeholder="with a placeholder"
+              />
+            </div>
+          </FormGroup>
+        </Col>
 
-                        <div class="input-box">
-                            <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
-                        </div>
-                    </FormGroup>
+        <Col md={6}>
+          <FormGroup>
+            <Label for="examplePassword">
+              <i className="fas fa-unlock-alt"></i>Password
+            </Label>
+            <div className="input-box">
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="password placeholder"
+              />
+            </div>
+          </FormGroup>
+        </Col>
+      </Row>
 
-                </Col>
-
-
-                <Col md={6}>
-                    <FormGroup>
-                        <Label for="examplePassword"><i class="fas fa-unlock-alt"></i>Password</Label>
-                        <div class="input-box">
-                            <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-                        </div>
-                    </FormGroup>
-                </Col>
-            </Row>
-
-            <Button>Login</Button>
-        </Form>
-
-    );
-}
+      <Button>Login</Button>
+    </Form>
+  );
+};
 
 export default Example;
