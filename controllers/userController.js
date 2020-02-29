@@ -4,32 +4,37 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.User.find(req.query)
-      .then(dbModel => res.json(dbModel))
+      .then(dbUserAll => res.json(dbUserAll))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
     db.User.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .then(dbUserId => res.json(dbUserId))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
+  findByEmail: function(req, res){
+    db.User.find({email: req.body.email}, function(dbFindEmail){
+      res.json(dbFindEmail);
+    })
+  },
+  create: function(req, res, hash) {
     db.User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
       new_user: true
     })
-      .then(dbModel => {
+      .then(dbUserCreate => {
         console.log("This is res.body: ", res.body);
         console.log("This is req.body: ", req.body);
-        console.log("This is dbModel: ", dbModel);
-        res.json(dbModel);
+        console.log("This is dbModel: ", dbUserCreate);
+         return res.json(dbUserCreate);
       })
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(dbUserUpdate => res.json(dbUserUpdate))
       .catch(err => res.status(422).json(err));
   }
 };

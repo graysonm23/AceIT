@@ -10,6 +10,8 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
+    "email-validator": "^2.0.4",
+    "formik": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.9.1",
@@ -20,7 +22,12 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "reactstrap": "^8.4.1",
+<<<<<<< HEAD
     "uploadcare-widget": "^3.8.3"
+=======
+    "uploadcare-widget": "^3.8.3",
+    "yup": "^0.28.1"
+>>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,10 +48,10 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jasmine": "^4.1.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-jasmine": "^4.1.0",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.9.0",
     "jquery": "^3.4.1",

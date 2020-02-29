@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  .cardStyle{
      background-color:#0ADDBF;
      padding: 25px;
@@ -6,3 +7,53 @@
  .bodyCard {
      background-color: #0ADDBF;
  }
+=======
+/* .card {
+  transition: 0.3s;
+  border-radius: 5px;
+} */
+
+/* Add rounded corners to the top left and the top right corner of the image */
+/* img {
+  border-radius: 5px 5px 0 0;
+}
+body {
+  background-color: hotpink;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  position: relative;
+  width: 1200px;
+  height: 300px;
+  margin: 240px auto;
+}
+.container .card {
+  position: relative;
+  width: calc(400px - 30px);
+  height: calc(300px - 30px);
+  background: violet;
+  float: left;
+  margin: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.container .card .CardImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 15%;
+  transition: 0.5s;
+  background: cornflowerblue;
+  z-index: 1;
+}
+.container .CardImg:hover CardImg {
+  top: 20px;
+  right: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+} */
+>>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7

@@ -7,7 +7,7 @@ const boardSchema = new Schema({
 	phrase: String,
 	background_color: String, //need to set default vals
     border_color: String, //need to set default vals
-    home: Boolean,
+    home: {type: Boolean, default: false},
 	buttons: [{type: Schema.Types.ObjectId, ref: "button"}],
 	rows: Number,
 	cols: Number,
