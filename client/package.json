@@ -11,6 +11,8 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
+    "email-validator": "^2.0.4",
+    "formik": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.9.1",
@@ -21,7 +23,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "reactstrap": "^8.4.1",
-    "uploadcare-widget": "^3.8.3"
+    "uploadcare-widget": "^3.8.3",
+    "yup": "^0.28.1"
   },
   "scripts": {
     "start": "react-scripts start",

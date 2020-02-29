@@ -29,32 +29,25 @@ router
 //   })
 //   .put(userController.update)
 
+router.route("/api/auth/signin").post(function(req, res) {
+  async () => {
+    const promise = userController.findByEmail;
+    await promise;
+  };
+});
 
-  router.route("/api/auth/signin")
-  .post(function(req, res){
-    
-    async () => {
-      
-     const promise = userController.findByEmail;
-     await promise;
-    }
-  
-  })
-
-  router.route("/api/auth/signup")
-  .post(function(req, res){
-    const myPlaintextPassword = req.body.password;
-    const saltRounds = 10;
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-        if (err) {
-          throw err;
-        }
-        userController.create(hash)
-      })
-    })
-  
-  })
+router.route("/api/auth/signup").post(function(req, res) {
+  const myPlaintextPassword = req.body.password;
+  const saltRounds = 10;
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+      if (err) {
+        throw err;
+      }
+      userController.create(hash);
+    });
+  });
+});
 
 function parseToken(request, response, next) {
   //get auth header value
@@ -105,5 +98,3 @@ function jwtVerify(req, res, next) {
 }
 
 module.exports = router;
-
-
