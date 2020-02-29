@@ -23,7 +23,7 @@ function Signup() {
     event.preventDefault();
     axios.post("/api/auth/signup");
     console.log(event);
-    API.saveBook(email)
+    API.signUpRoute(email)
       .then(res => {
         console.log(res);
       })
