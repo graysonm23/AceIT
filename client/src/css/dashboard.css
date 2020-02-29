@@ -1,0 +1,15 @@
+.dashHome {
+  width: 100%;
+  height: 110vh;
+  background-color: #0addbf;
+}
+.dashContainer {
+  margin-top: 10vh;
+}
+
+.col {
+  background-color: lightgrey;
+}
+.CardTitle {
+  text-align: center;
+}
