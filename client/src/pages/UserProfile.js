@@ -22,10 +22,12 @@ function Profile() {
   const [image, setImage] = useState([]);
   const [boards, setBoards] = useState([]);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisibleConfirm, setPasswordVisibleConfirm] = useState(false);
   const [editor, setEditor] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   useEffect(() => {
     imageDidMount();
   });
@@ -62,6 +64,9 @@ function Profile() {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+  const togglePasswordVisibilityConfirm = () => {
+    setPasswordVisibleConfirm(!passwordVisibleConfirm);
+  };
   const toggleEditor = () => {
     setEditor(!editor);
   };
@@ -97,6 +102,12 @@ function Profile() {
 
                       <Widget
                         publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
+                        // do not store images on development
+                        // doNotStore
+                        crop
+                        imagesOnly
+                        multipleMax={1}
+                        imageShrink="400x400"
                         id="userFile"
                         onFileSelect={file => {
                           console.log("File changed: ", file);
@@ -107,7 +118,7 @@ function Profile() {
                             );
                             file.done(info => {
                               console.log("File uploaded: ", info);
-                              setImage([info.originalUrl]);
+                              setImage([info.cdnUrl]);
                             });
                           }
                         }}
@@ -163,7 +174,7 @@ function Profile() {
               <Card className="userCard">
                 <CardBody className="userCardBody">
                   <CardTitle className="userCardTitle">
-                    <h2>{name} Information</h2>
+                    <h2>My Information</h2>
                   </CardTitle>
                   <CardBody className="userCardBody">
                     <div>
@@ -205,12 +216,35 @@ function Profile() {
                             value={password}
                             type={passwordVisible ? "text" : "password"}
                           />
-                          <span
-                            tabIndex={0}
-                            onFocus={togglePasswordVisibility}
-                            toggle="#password-field"
-                            className="fa fa-fw fa-eye field-icon toggle-password"
-                          ></span>
+                          {password.length ? (
+                            <span
+                              tabIndex={0}
+                              onFocus={togglePasswordVisibility}
+                              toggle="#password-field"
+                              className="fa fa-fw fa-eye field-icon toggle-password"
+                            ></span>
+                          ) : (
+                            ""
+                          )}
+                          <label>Confirm Password: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputPassword"
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            value={confirmPassword}
+                            type={passwordVisibleConfirm ? "text" : "password"}
+                          />
+                          {confirmPassword.length ? (
+                            <span
+                              tabIndex={0}
+                              onFocus={togglePasswordVisibilityConfirm}
+                              toggle="#password-field"
+                              className="fa fa-fw fa-eye field-icon toggle-password-2"
+                            ></span>
+                          ) : (
+                            ""
+                          )}
                         </InputGroup>
                         {editor ? (
                           <Button onClick={handleUserInfoSubmit}>Save</Button>

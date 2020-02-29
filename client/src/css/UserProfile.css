@@ -15,10 +15,10 @@
   flex-wrap: wrap;
 }
 .userCard {
-  min-height: 350px;
-  min-width: 400px;
-  max-height: 350px;
-  max-width: 400px;
+  min-height: 400px;
+  min-width: 450px;
+  max-height: 400px;
+  max-width: 450px;
   margin: 20px 0px 20px 0px;
 }
 #userPWidget {
@@ -28,8 +28,8 @@
   transform: translate(50%, -50%);
 }
 .userPicture {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
 }
 .userRow {
@@ -78,6 +78,13 @@
   cursor: default;
 }
 .toggle-password {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  bottom: 67px;
+  cursor: pointer;
+}
+.toggle-password-2 {
   position: absolute;
   right: 0;
   z-index: 999;
