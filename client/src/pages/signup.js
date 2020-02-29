@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import "../css/signup.css";
 import {
   Container,
@@ -19,6 +20,7 @@ function Signup() {
   const [email, setEmail] = useState([]);
   const handleEmailSubmit = event => {
     event.preventDefault();
+    axios.post("/api/auth/signup");
     console.log(event);
   };
   return (

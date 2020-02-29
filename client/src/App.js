@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/navbar";
 import Card from "./components/card";
