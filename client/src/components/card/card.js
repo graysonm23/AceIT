@@ -75,35 +75,6 @@ const ImgCard = props => {
             <Button>Click</Button>
           </CardBody>
         </Card>
-
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardImg top width="35%" src={icon3} alt=""></CardImg>
-          <CardBody>
-            <CardTitle>Home</CardTitle>
-            <CardSubtitle></CardSubtitle>
-            <CardText></CardText>
-            <Button>Click</Button>
-          </CardBody>
-        </Card>
       </div>
     </div>
   );

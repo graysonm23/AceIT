@@ -19,9 +19,21 @@ import API from "../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
-  const handleSubmit = event => {
+  const [password, setPassword] = useState([]);
+  const handleEmailSubmit = event => {
     event.preventDefault();
+    // axios.post("/api/auth/signup");
+
     console.log(event);
+    const userObj = {
+      email: email,
+      password: password
+    };
+    API.signUpRoute(userObj)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log("Unable to save email ", err));
   };
   return (
     <div className="homepage">
