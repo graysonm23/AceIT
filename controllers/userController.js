@@ -28,7 +28,7 @@ module.exports = {
         console.log("This is res.body: ", res.body);
         console.log("This is req.body: ", req.body);
         console.log("This is dbModel: ", dbUserCreate);
-        res.json(dbUserCreate);
+         return res.json(dbUserCreate);
       })
       .catch(err => res.status(422).json(err));
   },

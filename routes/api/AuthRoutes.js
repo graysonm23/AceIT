@@ -5,30 +5,30 @@ const bcrypt = require("bcrypt");
 
 // Matches with "/api/auth"
 router
-  .route("/")
+  .route("/api")
   .get(userController.findAll)
   .post(userController.create);
 
 // Matches with "/api/auth/:id"
-router
-  .route("/api/auth/:id")
-  .all(function(req, res, next) {
-    jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
-      if (err) {
-        res.status(403); //forbidden error
-        console.log(err);
-      } else {
-        next();
-      }
-    });
-  })
-  .get(parseToken, function(req, res) {
-  userController.findById(req.body.id, res, function(dbUserId){
-    res.json(dbUserId);
-  })
-  })
-  .put(userController.update)
-  .delete(userController.remove);
+// router
+//   .route("/api/auth/:id")
+//   .all(function(req, res, next) {
+//     jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
+//       if (err) {
+//         res.status(403); //forbidden error
+//         console.log(err);
+//       } else {
+//         next();
+//       }
+//     });
+//   })
+//   .get(parseToken, function(req, res) {
+//   userController.findById(req.body.id, res, function(dbUserId){
+//     res.json(dbUserId);
+//   })
+//   })
+//   .put(userController.update)
+
 
   router.route("/api/auth/signin")
   .post(function(req, res){

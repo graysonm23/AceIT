@@ -8,7 +8,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/aceit", { useNewUrlParser: true });
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Routes
-require("./routes/apiRoutes")(app, parseToken, jwtVerify);
+app.use(require("./routes/api/AuthRoutes"));
 
 function parseToken(request, response, next) {
   //get auth header value
@@ -43,28 +43,28 @@ function parseToken(request, response, next) {
   }
 }
 
-function jwtVerify(req, res, next) {
-  console.log("verifying token...");
-  jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
-    if (err) {
-      console.log(
-        "This is your token in JWT Verify " + JSON.stringify(req.token)
-      );
-      console.log("This is your error JWT Verify logic " + err);
-      res.redirect("login"); //forbidden error
-    } else {
-      db.Users.findOne({
-        where: {
-          user_id: authData.user
-        }
-      }).then(function(response) {
-        console.log("JWT has Verified your token");
-        return res.json(response);
-      });
-    }
-  });
-  next();
-}
+// function jwtVerify(req, res, next) {
+//   console.log("verifying token...");
+//   jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
+//     if (err) {
+//       console.log(
+//         "This is your token in JWT Verify " + JSON.stringify(req.token)
+//       );
+//       console.log("This is your error JWT Verify logic " + err);
+//       res.redirect("login"); //forbidden error
+//     } else {
+//       db.Users.findOne({
+//         where: {
+//           user_id: authData.user
+//         }
+//       }).then(function(response) {
+//         console.log("JWT has Verified your token");
+//         return res.json(response);
+//       });
+//     }
+//   });
+//   next();
+// }
 
 // Connect to the Mongo DB with heroku or local
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aceit");
