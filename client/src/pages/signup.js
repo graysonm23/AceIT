@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import "../css/signup.css";
 import {
   Container,
@@ -18,16 +17,10 @@ import {
 import API from "../utils/API";
 
 function Signup() {
-  const [email, setEmail] = useState([]);
+  const [email, setEmail] = useState("");
   const handleEmailSubmit = event => {
     event.preventDefault();
-    axios.post("/api/auth/signup");
     console.log(event);
-    API.saveBook(email)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log("Unable to save email ", err));
   };
   return (
     <div className="homepage">

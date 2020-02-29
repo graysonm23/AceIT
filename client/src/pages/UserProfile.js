@@ -97,6 +97,12 @@ function Profile() {
 
                       <Widget
                         publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
+                        // do not store images on development
+                        doNotStore
+                        crop
+                        imagesOnly
+                        multipleMax={1}
+                        imageShrink="400x400"
                         id="userFile"
                         onFileSelect={file => {
                           console.log("File changed: ", file);
@@ -107,7 +113,7 @@ function Profile() {
                             );
                             file.done(info => {
                               console.log("File uploaded: ", info);
-                              setImage([info.originalUrl]);
+                              setImage([info.cdnUrl]);
                             });
                           }
                         }}
