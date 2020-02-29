@@ -17,18 +17,18 @@ module.exports = {
       res.json(dbFindEmail);
     })
   },
-  create: function(req, res) {
+  create: function(req, res, hash) {
     db.User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hash,
       new_user: true
     })
       .then(dbUserCreate => {
         console.log("This is res.body: ", res.body);
         console.log("This is req.body: ", req.body);
         console.log("This is dbModel: ", dbUserCreate);
-        res.json(dbUserCreate);
+         return res.json(dbUserCreate);
       })
       .catch(err => res.status(422).json(err));
   },
