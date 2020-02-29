@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import ValidatedSignupForm from "./validatedSignupForm";
 import "../css/signup.css";
 import {
   Container,
@@ -19,9 +19,8 @@ import API from "../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
-  const handleEmailSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    axios.post("/api/auth/signup");
     console.log(event);
     API.saveBook(email)
       .then(res => {
@@ -40,65 +39,8 @@ function Signup() {
                   <h1 className="signupTitle">Signup</h1>
                 </CardTitle>
                 <CardBody className="homeCardBody">
-                  <form onSubmit={handleEmailSubmit}>
-                    <FormGroup>
-                      <label for="Your Name">
-                        <h4 className="signupSubtitle">Enter your Name</h4>{" "}
-                      </label>
-                      <input
-                        className="col s-12 signup-input"
-                        type="Name"
-                        name="name"
-                        id="exampleName"
-                        placeholder="John Doe"
-                      />
-                    </FormGroup>
-                    <FormGroup>
-                      <label for="Your Email">
-                        <h4 className="signupSubtitle">Enter your Email</h4>{" "}
-                      </label>
-                      <input
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
-                        className="col s-12 signup-input"
-                        type="email"
-                        name="email"
-                        id="exampleEmail"
-                        placeholder="example@example.com"
-                      />
-                    </FormGroup>
-                    <br></br>
-                    <FormGroup>
-                      <label for="Your Email">
-                        <h4 className="signupSubtitle">Enter your Password</h4>{" "}
-                      </label>
-                      <input
-                        className="col s-12 signup-input"
-                        type="password"
-                        name="ExamplePassword"
-                        id="examplePassword"
-                        placeholder="Your Password Here"
-                      />
-                      <br></br>
-                      <input
-                        className="col s-12 signup-input"
-                        type="confirmPassword"
-                        name="ConfirmPassword"
-                        id="CondirmPassword"
-                        placeholder="Confirm Password"
-                      />
-                    </FormGroup>
-                    <Button id="buttonCancel" size="lg" color="danger">
-                      X
-                    </Button>{" "}
-                    <Button
-                      color="success"
-                      id="buttonSubmit"
-                      size="lg"
-                      onClick={handleEmailSubmit}
-                    >
-                      ✓
-                    </Button>
+                  <form>
+                    <ValidatedSignupForm />
                   </form>
                 </CardBody>
               </CardBody>
