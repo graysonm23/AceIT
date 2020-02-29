@@ -1,4 +1,3 @@
-<<<<<<< HEAD:routes/api/AuthRoutes.js
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 const jwt = require("jsonwebtoken");
@@ -30,32 +29,25 @@ router
 //   })
 //   .put(userController.update)
 
+router.route("/api/auth/signin").post(function(req, res) {
+  async () => {
+    const promise = userController.findByEmail;
+    await promise;
+  };
+});
 
-  router.route("/api/auth/signin")
-  .post(function(req, res){
-    
-    async () => {
-      
-     const promise = userController.findByEmail;
-     await promise;
-    }
-  
-  })
-
-  router.route("/api/auth/signup")
-  .post(function(req, res){
-    const myPlaintextPassword = req.body.password;
-    const saltRounds = 10;
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-        if (err) {
-          throw err;
-        }
-        userController.create(hash)
-      })
-    })
-  
-  })
+router.route("/api/auth/signup").post(function(req, res) {
+  const myPlaintextPassword = req.body.password;
+  const saltRounds = 10;
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+      if (err) {
+        throw err;
+      }
+      userController.create(hash);
+    });
+  });
+});
 
 function parseToken(request, response, next) {
   //get auth header value
@@ -106,116 +98,3 @@ function jwtVerify(req, res, next) {
 }
 
 module.exports = router;
-
-
-=======
-const router = require("express").Router();
-const userController = require("../../controllers/userController");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-
-// Matches with "/api/auth"
-router
-  .route("/api")
-  .get(userController.findAll)
-  .post(userController.create);
-
-// Matches with "/api/auth/:id"
-// router
-//   .route("/api/auth/:id")
-//   .all(function(req, res, next) {
-//     jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
-//       if (err) {
-//         res.status(403); //forbidden error
-//         console.log(err);
-//       } else {
-//         next();
-//       }
-//     });
-//   })
-//   .get(parseToken, function(req, res) {
-//   userController.findById(req.body.id, res, function(dbUserId){
-//     res.json(dbUserId);
-//   })
-//   })
-//   .put(userController.update)
-
-
-  router.route("/api/auth/signin")
-  .post(function(req, res){
-    
-    async () => {
-      
-     const promise = userController.findByEmail;
-     await promise;
-    }
-  
-  })
-
-  router.route("/api/auth/signup")
-  .post(function(req, res){
-    const myPlaintextPassword = req.body.password;
-    const saltRounds = 10;
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-        if (err) {
-          throw err;
-        }
-        userController.create(hash)
-      })
-    })
-  
-  })
-
-function parseToken(request, response, next) {
-  //get auth header value
-  var bearerHeader = request.headers["authorization"];
-  console.log("This is bearer header ", bearerHeader);
-
-  //check if bearer is undefined
-  if (typeof bearerHeader !== "undefined") {
-    console.log("im here dad");
-    //split at the space
-    var bearer = bearerHeader.split(" ");
-    //get token from array
-    var bearerToken = bearer[1];
-    //set the token
-    request.token = bearerToken;
-    //Next middleware
-    next();
-  } else {
-    //forbidden
-    console.log("im here mom");
-    // return response.json();
-    response.sendStatus(403);
-    // return response.sendStatus(403);
-  }
-}
-
-function jwtVerify(req, res, next) {
-  console.log("verifying token...");
-  jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
-    if (err) {
-      console.log(
-        "This is your token in JWT Verify " + JSON.stringify(req.token)
-      );
-      console.log("This is your error JWT Verify logic " + err);
-      res.redirect("login"); //forbidden error
-    } else {
-      db.Users.findOne({
-        where: {
-          user_id: authData.user
-        }
-      }).then(function(response) {
-        console.log("JWT has Verified your token");
-        return res.json(response);
-      });
-    }
-  });
-  next();
-}
-
-module.exports = router;
-
-
->>>>>>> e0a8c02e107341692a290cca928a26600ddadef7:routes copy/api/authRoutes.js
