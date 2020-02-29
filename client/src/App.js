@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import Home from "./Pages/NewUS";
-import NoMatch from "./Pages/NoMatch";
+import Home from "./pages/NewUS";
+import NoMatch from "./pages/NoMatch";
 import Nav from "./components/navbar";
 import Card from "./components/card";
 import Settings from "./pages/NewUS";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Signup from "./Pages/signup";
+import Signup from "./pages/signup";
 
 function App() {
   return (
