@@ -17,7 +17,7 @@
 
 .homeCard {
   max-width: 500px;
-  height: 500px;
+  height: 77vh;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 10%);
@@ -30,54 +30,6 @@
 
 .homeCardBody {
   text-align: center;
-}
-
-.uploader-button .uploadcare--widget__button_type_open {
-  background-color: #5882e7;
-}
-
-.uploadcare--widget__button_type_open {
-  background-color: #5882e7;
-}
-#save:hover {
-  background-color: #3891ff !important;
-}
-
-#save {
-  border: none;
-  background-color: #5882e7;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  animation: bounce 1.25s infinite;
-}
-
-.success {
-  font-weight: bold;
-  color: rgb(73, 196, 68);
-}
-
-#widget {
-  position: absolute;
-  right: 30%;
-  top: 50%;
-}
-@keyframes bounce {
-  0% {
-    transform: scale(1, 1) translate(0px, 0px);
-  }
-
-  30% {
-    transform: scale(1, 1) translate(0px, 0px);
-  }
-
-  75% {
-    transform: scale(1, 1) translate(-25px, 0px);
-  }
-
-  100% {
-    transform: scale(1, 1) translate(0px, 0px);
-  }
 }
 
 #buttonCancel {
@@ -93,4 +45,24 @@
 
 .signup-input {
   background-color: white !important;
+  margin-bottom: 10px;
+}
+
+.signupTitle {
+  color: #3f3e3e;
+}
+.signupSubtitle {
+  color: #3f3e3e;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: -5%;
+}
+
+.emailForm {
+  display: block;
 }
