@@ -8,7 +8,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-mongoose.connect("mongodb://localhost:27017/aceit", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/aceit", { useNewUrlParser: true });
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

@@ -3,12 +3,12 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/navbar";
 import Card from "./components/card";
-import Settings from "./Pages/NewUS";
-import Profile from "./Pages/UserProfile";
+import Settings from "./pages/NewUS";
+import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Signup from "./Pages/signup";
-import Home from "./Pages/NewUS";
-import dashboard from "./Pages/dashboard";
+import Signup from "./pages/signup";
+import Home from "./pages/NewUS";
+import dashboard from "./pages/dashboard";
 
 function App() {
   return (

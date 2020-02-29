@@ -19,11 +19,17 @@ import API from "../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
+  const [password, setPassword] = useState([]);
   const handleEmailSubmit = event => {
     event.preventDefault();
-    axios.post("/api/auth/signup");
+    // axios.post("/api/auth/signup");
+
     console.log(event);
-    API.signUpRoute(email)
+    const userObj = {
+      email: email,
+      password: password
+    }
+    API.signUpRoute(userObj)
       .then(res => {
         console.log(res);
       })
@@ -73,6 +79,7 @@ function Signup() {
                         <h4 className="signupSubtitle">Enter your Password</h4>{" "}
                       </label>
                       <input
+                        onChange={e => setPassword(e.target.value)}
                         className="col s-12 signup-input"
                         type="password"
                         name="ExamplePassword"
@@ -80,13 +87,13 @@ function Signup() {
                         placeholder="Your Password Here"
                       />
                       <br></br>
-                      <input
+                      {/* <input
                         className="col s-12 signup-input"
                         type="confirmPassword"
                         name="ConfirmPassword"
                         id="CondirmPassword"
                         placeholder="Confirm Password"
-                      />
+                      /> */}
                     </FormGroup>
                     <Button id="buttonCancel" size="lg" color="danger">
                       X
