@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ValidatedSignupForm from "./validatedSignupForm";
 import "../css/signup.css";
 import {
   Container,
@@ -17,8 +18,8 @@ import {
 import API from "../utils/API";
 
 function Signup() {
-  const [email, setEmail] = useState("");
-  const handleEmailSubmit = event => {
+  const [email, setEmail] = useState([]);
+  const handleSubmit = event => {
     event.preventDefault();
     console.log(event);
   };
@@ -30,41 +31,11 @@ function Signup() {
             <Card className="homeCard">
               <CardBody>
                 <CardTitle className="homeCardTitle">
-                  <br></br>
-                  <br></br>
-                  <h1>Signup</h1>
+                  <h1 className="signupTitle">Signup</h1>
                 </CardTitle>
                 <CardBody className="homeCardBody">
-                  <form onSubmit={handleEmailSubmit}>
-                    <FormGroup>
-                      <label for="Your Email">
-                        <br></br>
-                        <h4>Enter your Email</h4>{" "}
-                      </label>
-                      <br></br>
-                      <br></br>
-                      <input
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
-                        className="col s-12 signup-input"
-                        type="email"
-                        name="email"
-                        id="exampleEmail"
-                        placeholder="example@example.com"
-                      />
-                    </FormGroup>
-                    <br></br>
-                    <Button id="buttonCancel" size="lg" color="danger">
-                      X
-                    </Button>{" "}
-                    <Button
-                      color="success"
-                      id="buttonSubmit"
-                      size="lg"
-                      onClick={handleEmailSubmit}
-                    >
-                      ✓
-                    </Button>
+                  <form>
+                    <ValidatedSignupForm />
                   </form>
                 </CardBody>
               </CardBody>

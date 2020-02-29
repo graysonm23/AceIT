@@ -81,6 +81,13 @@
   position: absolute;
   right: 0;
   z-index: 999;
+  bottom: 67px;
+  cursor: pointer;
+}
+.toggle-password-2 {
+  position: absolute;
+  right: 0;
+  z-index: 999;
   bottom: 7px;
   cursor: pointer;
 }
