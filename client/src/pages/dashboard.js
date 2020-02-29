@@ -29,12 +29,7 @@ function Dashboard() {
           <Col>
             {" "}
             <Card>
-              <CardImg
-                top
-                width="100%"
-                src="../images/exampleCardImage.png"
-                alt="Card image"
-              />
+              <CardImg top width="100%" src="" alt="Card image" />
               <CardBody>
                 <CardTitle>Card title</CardTitle>
               </CardBody>
