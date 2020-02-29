@@ -124,3 +124,23 @@ button:hover {
   background-color: white;
   color: #0addbf;
 }
+
+.signUpCardBody {
+  text-align: center;
+  min-height: 700px;
+}
+
+.SignupCol {
+  background: none;
+  width: 100%;
+  height: 100vh;
+}
+
+.SignupCard {
+  max-width: 40vw;
+  height: 85vh;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  position: relative;
+}
