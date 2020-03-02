@@ -71,14 +71,14 @@ function Profile() {
     setEditor(!editor);
   };
   return (
-    <div className="userProfile">
+    <div className="homepage">
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
             {name.length ? (
               <h1>{nameHandler(name)}'s Settings</h1>
             ) : (
-              <h1>My Settings</h1>
+              <h1 className="profileTitle">My Profile</h1>
             )}
             <div className="wrapperDiv">
               <Card className="userCard">
@@ -126,9 +126,13 @@ function Profile() {
                     </div>
                   </CardBody>
                 </CardBody>
-                <Button id="userSave" onClick={handleImageSubmit} type="submit">
+                <button
+                  className="profileButton"
+                  onClick={handleImageSubmit}
+                  type="submit"
+                >
                   Save Image
-                </Button>
+                </button>
               </Card>
               <Card className="userCard">
                 <CardBody className="userCardBody">
@@ -138,7 +142,9 @@ function Profile() {
                   ) : (
                     <div className="boardsHeader">
                       <h2>You have no boards right now</h2>
-                      <Button className="userCreateButton">Create One!</Button>
+                      <button className="createBoardButton">
+                        Create Board
+                      </button>
                     </div>
                   )}
                   <CardBody className="userCardBody">
@@ -193,7 +199,7 @@ function Profile() {
                             autoComplete="new-password"
                             autoCapitalize="on"
                             readOnly={editor ? false : "readonly"}
-                            className="inputName"
+                            className="input"
                             onChange={e => setName(e.target.value)}
                             value={name}
                             type="name"
@@ -202,7 +208,7 @@ function Profile() {
                           <Input
                             autoComplete="new-password"
                             readOnly={editor ? false : "readonly"}
-                            className="inputEmail"
+                            className="input"
                             onChange={e => setEmail(e.target.value)}
                             value={email}
                             type="email"
@@ -211,7 +217,7 @@ function Profile() {
                           <Input
                             autoComplete="new-password"
                             readOnly={editor ? false : "readonly"}
-                            className="inputPassword"
+                            className="input"
                             onChange={e => setPassword(e.target.value)}
                             value={password}
                             type={passwordVisible ? "text" : "password"}
@@ -230,7 +236,7 @@ function Profile() {
                           <Input
                             autoComplete="new-password"
                             readOnly={editor ? false : "readonly"}
-                            className="inputPassword"
+                            className="input"
                             onChange={e => setConfirmPassword(e.target.value)}
                             value={confirmPassword}
                             type={passwordVisibleConfirm ? "text" : "password"}
@@ -247,7 +253,12 @@ function Profile() {
                           )}
                         </InputGroup>
                         {editor ? (
-                          <Button onClick={handleUserInfoSubmit}>Save</Button>
+                          <button
+                            className="myInformationButton"
+                            onClick={handleUserInfoSubmit}
+                          >
+                            Save
+                          </button>
                         ) : (
                           ""
                         )}
