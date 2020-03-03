@@ -1,6 +1,10 @@
+body {
+  font-family: "Oswald";
+}
+
 .homepage {
   width: 100%;
-  height: 110vh;
+  height: 100%;
   background-color: #0addbf;
 }
 
@@ -37,6 +41,7 @@
   margin-left: 18%;
   margin-top: 10%;
 }
+
 #buttonSubmit {
   float: right;
   margin-right: 18%;
@@ -51,6 +56,7 @@
 .signupTitle {
   color: #3f3e3e;
 }
+
 .signupSubtitle {
   color: #3f3e3e;
 }
@@ -117,6 +123,7 @@ button {
   color: white;
   border: 1px solid #0addbf;
   background-color: 250ms;
+  border-radius: 4px;
 }
 
 button:hover {
@@ -127,7 +134,6 @@ button:hover {
 
 .signUpCardBody {
   text-align: center;
-  min-height: 700px;
 }
 
 .SignupCol {
@@ -137,10 +143,85 @@ button:hover {
 }
 
 .SignupCard {
-  max-width: 40vw;
-  height: 85vh;
+  max-width: 60%;
+  height: fit-content;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 10%);
-  position: relative;
 }
+
+.userContainer {
+  margin-top: 50px;
+  background-color: #0addbf;
+}
+
+.profileTitle {
+  margin-top: 20px;
+  font-weight: bolder;
+  color: white;
+  text-shadow: -1px 0px 4px black;
+}
+
+.profileButton {
+  float: left;
+  width: 185px;
+  margin-bottom: 10px;
+  margin-left: 90px;
+  border-radius: 4px;
+  margin-top: 240px;
+}
+
+.createBoardButton {
+  float: left;
+  width: 185px;
+  margin-bottom: 10px;
+  margin-left: 115px;
+  margin-top: 253px;
+  border-radius: 4px;
+}
+
+.fa-pen-square:before {
+  content: "\f14b";
+  color: #0addbf;
+}
+
+.fa-pen-square:hover {
+  cursor: pointer;
+}
+
+.myInformationButton {
+  float: left;
+  width: 185px;
+  margin-bottom: 10px;
+  margin-left: 90px;
+  margin-top: 7px;
+  border-radius: 4px;
+}
+
+.userCardBody {
+  border-style: outset;
+  border-width: 2px;
+}
+
+.userInformationCard {
+  min-height: 300px;
+  min-width: 1006px;
+  margin: 20px 0px 20px 0px;
+}
+
+.infoSubButton {
+  float: left;
+  width: 185px;
+  margin-left: 155px;
+  border-radius: 4px;
+}
+
+.infoCol1 {
+  background-color: white;
+}
+
+.infoCol2 {
+  background-color: white;
+}
+
+.infoForm {}
