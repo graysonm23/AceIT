@@ -39,9 +39,9 @@ function Signup() {
     <div className="homepage">
       <Container className="homeContainer">
         <Row>
-          <Col className="homeCol">
-            <Card className="homeCard">
-              <CardBody>
+          <Col className="SignupCol">
+            <Card className="SignupCard">
+              <CardBody className="signUpCardBody">
                 <CardTitle className="homeCardTitle">
                   <h1 className="signupTitle">Signup</h1>
                 </CardTitle>
