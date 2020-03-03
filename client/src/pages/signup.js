@@ -19,7 +19,6 @@ import API from "../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
-<<<<<<< HEAD
   const [password, setPassword] = useState([]);
   const handleEmailSubmit = event => {
     event.preventDefault();
@@ -35,11 +34,6 @@ function Signup() {
         console.log(res);
       })
       .catch(err => console.log("Unable to save email ", err));
-=======
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(event);
->>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
   };
   return (
     <div className="homepage">
@@ -52,7 +46,6 @@ function Signup() {
                   <h1 className="signupTitle">Signup</h1>
                 </CardTitle>
                 <CardBody className="homeCardBody">
-<<<<<<< HEAD
                   <form onSubmit={handleEmailSubmit}>
                     <FormGroup>
                       <label for="Your Name">
@@ -113,10 +106,6 @@ function Signup() {
                     >
                       ✓
                     </Button>
-=======
-                  <form>
-                    <ValidatedSignupForm />
->>>>>>> 452d966c00f848a2d7c67b7a12f897d457564aa7
                   </form>
                 </CardBody>
               </CardBody>
