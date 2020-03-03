@@ -9,7 +9,6 @@ import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
 import Home from "./pages/NewUS";
-import dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/userprofile" component={Profile} />
-          <Route exact path="/dashboard" component={dashboard} />
           <Route component={NoMatch} />
         </Switch>
       </div>
