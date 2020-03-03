@@ -35,9 +35,9 @@ const ValidatedSignupForm = () => (
     //********Using Yum for validation********/
 
     validationSchema={Yup.object().shape({
-      firstName: Yup.string()
-        .min(2, "Too Short!")
-        .max(50, "Too Long!"),
+      name: Yup.string()
+        .min(2, "Too Short")
+        .max(50, "Too Long"),
       email: Yup.string()
         .email()
         .required("Required"),
@@ -66,6 +66,19 @@ const ValidatedSignupForm = () => (
       } = props;
       return (
         <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Name</label>
+          <input
+            name="name"
+            type="text"
+            placeholder="Enter your name"
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.name && touched.name && "error"}
+          />
+          {errors.name && touched.name && (
+            <div className="input-feedback">{errors.name}</div>
+          )}
           <label htmlFor="email">Email</label>
           <input
             name="email"
