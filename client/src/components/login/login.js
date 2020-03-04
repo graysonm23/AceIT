@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import API from "../../utils/API";
 
@@ -20,48 +20,46 @@ const Signin = props => {
       .catch(err => console.log("Unable to save email ", err));
   };
   return (
-    <div>
-      <Form className="loginForm" onSubmit={handleEmailSubmit}>
-        <Row className="loginRow">
-          <Col className="loginCol" md={6}>
-            <FormGroup>
-              <Label for="exampleEmail">
-                <i class="fas fa-user"></i>Email
-              </Label>
+    <Form className="loginForm" onSubmit={handleEmailSubmit}>
+      <Row className="loginRow">
+        <Col className="loginCol" md={6}>
+          <FormGroup>
+            <Label for="exampleEmail">
+              <i class="fas fa-user"></i>Email
+            </Label>
 
-              <div class="input-box">
-                <Input
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
-                  placeholder="Please place email address here"
-                  onChange={e => setEmail(e.target.value)}
-                />
-              </div>
-            </FormGroup>
-          </Col>
+            <div class="input-box">
+              <Input
+                type="email"
+                name="email"
+                id="exampleEmail"
+                placeholder="Please place email address here"
+                onChange={e => setEmail(e.target.value)}
+              />
+            </div>
+          </FormGroup>
+        </Col>
 
-          <Col className="loginCol" md={6}>
-            <FormGroup>
-              <Label for="examplePassword">
-                <i class="fas fa-unlock-alt"></i>Password
-              </Label>
-              <div class="input-box">
-                <Input
-                  type="password"
-                  name="password"
-                  id="examplePassword"
-                  placeholder="Please place password here"
-                  onChange={e => setPassword(e.target.value)}
-                />
-              </div>
-            </FormGroup>
-          </Col>
-        </Row>
+        <Col className="loginCol" md={6}>
+          <FormGroup>
+            <Label for="examplePassword">
+              <i class="fas fa-unlock-alt"></i>Password
+            </Label>
+            <div class="input-box">
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="Please place password here"
+                onChange={e => setPassword(e.target.value)}
+              />
+            </div>
+          </FormGroup>
+        </Col>
+      </Row>
 
-        <Button type="submit">Login</Button>
-      </Form>
-    </div>
+      <Button type="submit">Login</Button>
+    </Form>
   );
 };
 

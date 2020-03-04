@@ -67,11 +67,14 @@ div.homePage {
   align-items: center;
   justify-content: center;
 }
-
+body {
+  overflow-x: hidden;
+}
+html {
+  background-color: #0addbf;
+}
 #root {
   background-color: #0addbf;
-  background-size: cover;
-  height: 110%;
 }
 
 .uploader-button .uploadcare--widget__button_type_open {
