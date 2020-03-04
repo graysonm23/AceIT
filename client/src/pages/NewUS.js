@@ -26,21 +26,20 @@ function Home() {
     }
   };
   return (
-    <div className="homepage">
+    <div path="Settings" className="homepage">
       <Container className="homeContainer">
         <Row className="homeRow">
           <Col className="homeCol">
             <Card className="homeCard">
               <CardBody>
                 <CardTitle className="homeCardTitle">
-                  <h1>Settings</h1>
+                  {image.length > 0 ? (
+                    <h1 className="success">Success!</h1>
+                  ) : (
+                    <h1>Upload profile picture</h1>
+                  )}
                 </CardTitle>
                 <CardBody className="homeCardBody">
-                  {image.length > 0 ? (
-                    <span className="success">Success!</span>
-                  ) : (
-                    <p>Upload profile picture</p>
-                  )}
                   <div id="widget">
                     <label htmlFor="file">Your file:</label>{" "}
                     <Widget

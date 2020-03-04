@@ -29,9 +29,13 @@ function Profile() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [saved, setSaved] = useState(false);
   useEffect(() => {
     imageDidMount();
   });
+  const userDidMount = () => {
+    setSaved(true);
+  };
   const imageDidMount = () => {
     // API.getBooks(image)
     //   .then(res => {
@@ -57,11 +61,11 @@ function Profile() {
     string = s[0];
     return string;
   };
-  // const handleUserInfoSubmit = event => {
-  //   event.preventDefault();
-  //   setEditor(false);
-  //   console.log(name, password, email);
-  // };
+  const handleUserInfoSubmit = event => {
+    event.preventDefault();
+    setEditor(false);
+    console.log(name, password, email);
+  };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -76,8 +80,8 @@ function Profile() {
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
-            {name.length ? (
-              <h1>{nameHandler(name)}'s Settings</h1>
+            {name.length && saved ? (
+              <h1>{nameHandler(name)}'s Profile</h1>
             ) : (
               <h1 className="profileTitle">My Profile</h1>
             )}
@@ -192,14 +196,97 @@ function Profile() {
                   </CardTitle>
                   <CardBody className="userCardInnerBody">
                     <div>
-                      <form>
-                        <ValidatedInfoForm />
-                      </form>
-                      <span
-                        tabIndex={0}
-                        onClick={toggleEditor}
-                        class="fas fa-pen-square toggle-editor"
-                      ></span>
+                      <Form onSubmit={handleUserInfoSubmit}>
+                        <InputGroup
+                          autoComplete="new-password"
+                          className="inputGroup"
+                        >
+                          <span
+                            tabIndex={0}
+                            onClick={() => {
+                              toggleEditor();
+                              {
+                                !name.length ? setSaved(false) : setSaved(true);
+                              }
+                            }}
+                            class="fas fa-pen-square toggle-editor"
+                          ></span>
+                          <label>Name: </label>
+                          <Input
+                            autoComplete="new-password"
+                            autoCapitalize="on"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputName"
+                            onChange={e => setName(e.target.value)}
+                            value={name}
+                            type="name"
+                          />
+                          <label>Email: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputEmail"
+                            onChange={e => setEmail(e.target.value)}
+                            value={email}
+                            type="email"
+                          />
+                          <label>Password: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputPassword"
+                            onChange={e => setPassword(e.target.value)}
+                            value={password}
+                            type={passwordVisible ? "text" : "password"}
+                          />
+                          {password.length ? (
+                            <span
+                              tabIndex={0}
+                              onFocus={togglePasswordVisibility}
+                              toggle="#password-field"
+                              className="fa fa-fw fa-eye field-icon toggle-password"
+                            ></span>
+                          ) : (
+                            ""
+                          )}
+                          <label>Confirm Password: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputPassword"
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            value={confirmPassword}
+                            type={passwordVisibleConfirm ? "text" : "password"}
+                          />
+                          {confirmPassword.length ? (
+                            <span
+                              tabIndex={0}
+                              onFocus={togglePasswordVisibilityConfirm}
+                              toggle="#password-field"
+                              className="fa fa-fw fa-eye field-icon toggle-password-2"
+                            ></span>
+                          ) : (
+                            ""
+                          )}
+                        </InputGroup>
+                        {editor ? (
+                          <Button
+                            onClick={() => {
+                              handleUserInfoSubmit();
+                              setSaved(true);
+                            }}
+                            // disabled={
+                            //   name && email && password && confirmPassword
+                            //     ? "false"
+                            //     : "true"
+                            // }
+                          >
+                            Save
+                          </Button>
+                        ) : (
+                          ""
+                        )}
+                      </Form>
                     </div>
                   </CardBody>
                 </CardBody>

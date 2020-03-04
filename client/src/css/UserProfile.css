@@ -2,10 +2,10 @@
   background-color: #0addbf;
   background-position: center;
   background-size: cover;
-  overflow: hidden;
 }
 
 .userCol {
+  margin-top: 80px;
   width: 100%;
   background: none;
   text-align: center;
@@ -43,7 +43,7 @@
 }
 
 .userSettingsContainer {
-  height: 100vh;
+  height: 100%;
   background-color: white;
   position: relative;
 }
