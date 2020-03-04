@@ -7,7 +7,7 @@ import Card from "./components/card";
 import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Signup from "./pages/signup";
+import Signup from "./pages/signup/signup.js";
 import Home from "./pages/NewUS";
 
 function App() {
