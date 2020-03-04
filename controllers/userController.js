@@ -13,28 +13,26 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByEmail: function(req, res){
-    db.User.find({email: req.body.email}, function(dbFindEmail){
+    db.User.find({email: req}, function(dbFindEmail){
       res.json(dbFindEmail);
     })
   },
-  create: function(req, res, hash) {
+  create: function(name, email, hash, res) {
     db.User.create({
-      name: req.body.name,
-      email: req.body.email,
+      name: name,
+      email: email,
       password: hash,
       new_user: true
     })
       .then(dbUserCreate => {
-        console.log("This is res.body: ", res.body);
-        console.log("This is req.body: ", req.body);
         console.log("This is dbModel: ", dbUserCreate);
-         return res.json(dbUserCreate);
+         return dbUserCreate;
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => console.log(err));
   },
   update: function(req, res) {
     db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbUserUpdate => res.json(dbUserUpdate))
-      .catch(err => res.status(422).json(err));
+      .then(dbUserUpdate => {console.log(dbUserUpdate); res.json(dbUserUpdate)})
+      .catch(err => res.json("user did not update"));
   }
 };
