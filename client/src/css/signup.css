@@ -14,12 +14,12 @@
   margin-bottom: 10px;
 }
 
-.signupTitle {
+/* .signupTitle {
   color: #3f3e3e;
 }
 .signupSubtitle {
   color: #3f3e3e;
-}
+} */
 /* 
 .row {
   display: flex;
@@ -91,7 +91,7 @@ button:hover {
   color: #0addbf;
 }
 
-.signUpCardBody {
+/* .signUpCardBody {
   text-align: center;
   min-height: 700px;
 }
@@ -109,4 +109,4 @@ button:hover {
   left: 50%;
   transform: translate(-50%, 10%);
   position: relative;
-}
+} */

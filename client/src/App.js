@@ -17,10 +17,10 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/dashboard" component={dashboard} />
-          <Route exact path="/userprofile" component={Profile} />
+          <Route exact path="/profile" component={Profile} />
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/card" component={Card} />
+          <Route exact path="/cards" component={Card} />
           <Route exact path="/" component={Login} />
           <Route component={NoMatch} />
         </Switch>

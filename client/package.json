@@ -4,9 +4,13 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/icons": "^4.9.1",
+    "@stardust-ui/docs-components": "^0.40.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "@trendmicro/react-sidenav": "^0.5.0",
     "@uploadcare/react-widget": "^1.2.5",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
@@ -15,14 +19,17 @@
     "formik": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
+    "mdbreact": "^4.25.3",
     "mongoose": "^5.9.1",
     "path": "^0.12.7",
-    "react": "^16.12.0",
+    "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "reactstrap": "^8.4.1",
+    "rsuite": "^4.2.1",
+    "semantic-ui-react": "^0.88.2",
     "uploadcare-widget": "^3.8.3",
     "yup": "^0.28.1"
   },
@@ -44,6 +51,7 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jasmine": "^4.1.0",
     "eslint-plugin-node": "^11.0.0",
@@ -53,7 +61,8 @@
     "jest": "^24.9.0",
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "typescript": "^3.8.3"
   },
   "eslintConfig": {
     "extends": "react-app"
