@@ -18,6 +18,7 @@ import {
 } from "reactstrap";
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
+import $ from "jquery";
 
 function Profile() {
   const [image, setImage] = useState([]);
@@ -30,6 +31,7 @@ function Profile() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [saved, setSaved] = useState(false);
+  const [hide, setHide] = useState(false);
   useEffect(() => {
     imageDidMount();
   });
@@ -60,6 +62,11 @@ function Profile() {
     let s = string.split(/(?<=^\S+)\s/);
     string = s[0];
     return string;
+  };
+  const openImageHandler = event => {
+    $(
+      "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
+    ).click();
   };
   const handleUserInfoSubmit = event => {
     event.preventDefault();
@@ -96,6 +103,7 @@ function Profile() {
                       {image.length ? (
                         <div className="imgDiv">
                           <img
+                            onClick={openImageHandler}
                             className="userPicture"
                             alt="user pic"
                             src={image}
@@ -109,6 +117,7 @@ function Profile() {
                         publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
                         // do not store images on development
                         // doNotStore
+                        onHide={hide ? $("#userFile").hide() : ""}
                         crop
                         imagesOnly
                         multipleMax={1}
@@ -125,26 +134,33 @@ function Profile() {
                               console.log("File uploaded: ", info);
                               setImage([info.cdnUrl]);
                             });
+                            if (
+                              file.progress(info => {
+                                return (info = info.progress);
+                              }) === 1
+                            ) {
+                              setHide(true);
+                            }
                           }
                         }}
                       />
                     </div>
-                    <button
+                    {/* <button
                       className="profileButton"
                       onClick={handleImageSubmit}
                       type="submit"
                     >
                       Save Image
-                    </button>
+                    </button> */}
                   </CardBody>
                 </CardBody>
-                {/* <button
+                <button
                   className="profileButton"
                   onClick={handleImageSubmit}
                   type="submit"
                 >
                   Save Image
-                </button> */}
+                </button>
               </Card>
               <Card className="userCard">
                 <CardBody className="userCardBody">
@@ -154,9 +170,6 @@ function Profile() {
                   ) : (
                     <div className="boardsHeader">
                       <h2>You have no boards right now</h2>
-                      <button className="createBoardButton">
-                        Create Board
-                      </button>
                     </div>
                   )}
                   <CardBody className="userCardInnerBody">
@@ -188,6 +201,7 @@ function Profile() {
                     )}
                   </CardBody>
                 </CardBody>
+                <button className="createBoardButton">Create Board</button>
               </Card>
               <Card className="userInformationCard">
                 <CardBody className="userCardBody">
@@ -271,6 +285,7 @@ function Profile() {
                         </InputGroup>
                         {editor ? (
                           <Button
+                            className="saveInfoButton"
                             onClick={() => {
                               handleUserInfoSubmit();
                               setSaved(true);
