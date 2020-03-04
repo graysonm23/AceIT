@@ -1,10 +1,10 @@
-.userProfile {
+/* .userProfile {
   background-color: #0addbf;
   background-position: center;
   background-size: cover;
-}
+} */
 
-.userCol {
+/* .userCol {
   margin-top: 80px;
   width: 100%;
   background: none;
@@ -24,7 +24,55 @@
   max-width: 450px;
   margin: 20px 0px 20px 0px;
 }
+*/
+.userCard {
+  width: 450px;
+  height: 450px;
+  flex-grow: 1;
+  margin: 50px;
+  position: relative;
+}
+.userCardTitle {
+  text-align: center;
+}
+.boardsHeader {
+  text-align: center;
+}
+.userCardInnerBody {
+  height: 100%;
+  width: 100%;
+}
+.wrapperDiv {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
+.userInformationCard {
+  margin: 0px 50px 50px 50px;
+  flex-grow: 2;
+}
+#userPWidget {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userPicture {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+.profileButton {
+  position: absolute;
+}
+
+/*
 #userPWidget {
   position: absolute;
   top: 50%;
@@ -46,7 +94,7 @@
   height: 100%;
   background-color: white;
   position: relative;
-}
+} */
 
 #userSave {
   border: none;
@@ -58,14 +106,14 @@
   background-color: #3891ff !important;
 }
 
-.userCreateButton {
+/* .userCreateButton {
   border: none;
   background-color: #5882e7;
   position: absolute;
   bottom: 0;
   right: 35%;
   margin: 0 auto;
-}
+} */
 
 .userCreateButton:hover {
   background-color: #3891ff !important;
@@ -112,13 +160,13 @@
   position: relative;
 }
 
-.comingSoonHeader {
+/* .comingSoonHeader {
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   color: gray;
-}
+} */
 
 .toggle-editor {
   position: absolute;
