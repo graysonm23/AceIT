@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/UserProfile.css";
+import ValidatedInfoForm from "./changeInfoForm";
 import {
   Container,
   Row,
@@ -56,11 +57,11 @@ function Profile() {
     string = s[0];
     return string;
   };
-  const handleUserInfoSubmit = event => {
-    event.preventDefault();
-    setEditor(false);
-    console.log(name, password, email);
-  };
+  // const handleUserInfoSubmit = event => {
+  //   event.preventDefault();
+  //   setEditor(false);
+  //   console.log(name, password, email);
+  // };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -71,14 +72,14 @@ function Profile() {
     setEditor(!editor);
   };
   return (
-    <div className="userProfile">
+    <div className="homepage">
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
             {name.length ? (
               <h1>{nameHandler(name)}'s Settings</h1>
             ) : (
-              <h1>My Settings</h1>
+              <h1 className="profileTitle">My Profile</h1>
             )}
             <div className="wrapperDiv">
               <Card className="userCard">
@@ -86,7 +87,7 @@ function Profile() {
                   <CardTitle className="userCardTitle">
                     <h2>Profile Picture</h2>
                   </CardTitle>
-                  <CardBody className="userCardBody">
+                  <CardBody className="userCardInnerBody">
                     <div id="userPWidget">
                       {image.length ? (
                         <div className="imgDiv">
@@ -124,11 +125,22 @@ function Profile() {
                         }}
                       />
                     </div>
+                    <button
+                      className="profileButton"
+                      onClick={handleImageSubmit}
+                      type="submit"
+                    >
+                      Save Image
+                    </button>
                   </CardBody>
                 </CardBody>
-                <Button id="userSave" onClick={handleImageSubmit} type="submit">
+                {/* <button
+                  className="profileButton"
+                  onClick={handleImageSubmit}
+                  type="submit"
+                >
                   Save Image
-                </Button>
+                </button> */}
               </Card>
               <Card className="userCard">
                 <CardBody className="userCardBody">
@@ -138,10 +150,12 @@ function Profile() {
                   ) : (
                     <div className="boardsHeader">
                       <h2>You have no boards right now</h2>
-                      <Button className="userCreateButton">Create One!</Button>
+                      <button className="createBoardButton">
+                        Create Board
+                      </button>
                     </div>
                   )}
-                  <CardBody className="userCardBody">
+                  <CardBody className="userCardInnerBody">
                     {boards.length ? (
                       <ListGroup>
                         {boards.map((board, index) => (
@@ -171,97 +185,23 @@ function Profile() {
                   </CardBody>
                 </CardBody>
               </Card>
-              <Card className="userCard">
+              <Card className="userInformationCard">
                 <CardBody className="userCardBody">
                   <CardTitle className="userCardTitle">
                     <h2>My Information</h2>
                   </CardTitle>
-                  <CardBody className="userCardBody">
+                  <CardBody className="userCardInnerBody">
                     <div>
-                      <Form onSubmit={handleUserInfoSubmit}>
-                        <InputGroup
-                          autoComplete="new-password"
-                          className="inputGroup"
-                        >
-                          <span
-                            tabIndex={0}
-                            onClick={toggleEditor}
-                            class="fas fa-pen-square toggle-editor"
-                          ></span>
-                          <label>Name: </label>
-                          <Input
-                            autoComplete="new-password"
-                            autoCapitalize="on"
-                            readOnly={editor ? false : "readonly"}
-                            className="inputName"
-                            onChange={e => setName(e.target.value)}
-                            value={name}
-                            type="name"
-                          />
-                          <label>Email: </label>
-                          <Input
-                            autoComplete="new-password"
-                            readOnly={editor ? false : "readonly"}
-                            className="inputEmail"
-                            onChange={e => setEmail(e.target.value)}
-                            value={email}
-                            type="email"
-                          />
-                          <label>Password: </label>
-                          <Input
-                            autoComplete="new-password"
-                            readOnly={editor ? false : "readonly"}
-                            className="inputPassword"
-                            onChange={e => setPassword(e.target.value)}
-                            value={password}
-                            type={passwordVisible ? "text" : "password"}
-                          />
-                          {password.length ? (
-                            <span
-                              tabIndex={0}
-                              onFocus={togglePasswordVisibility}
-                              toggle="#password-field"
-                              className="fa fa-fw fa-eye field-icon toggle-password"
-                            ></span>
-                          ) : (
-                            ""
-                          )}
-                          <label>Confirm Password: </label>
-                          <Input
-                            autoComplete="new-password"
-                            readOnly={editor ? false : "readonly"}
-                            className="inputPassword"
-                            onChange={e => setConfirmPassword(e.target.value)}
-                            value={confirmPassword}
-                            type={passwordVisibleConfirm ? "text" : "password"}
-                          />
-                          {confirmPassword.length ? (
-                            <span
-                              tabIndex={0}
-                              onFocus={togglePasswordVisibilityConfirm}
-                              toggle="#password-field"
-                              className="fa fa-fw fa-eye field-icon toggle-password-2"
-                            ></span>
-                          ) : (
-                            ""
-                          )}
-                        </InputGroup>
-                        {editor ? (
-                          <Button onClick={handleUserInfoSubmit}>Save</Button>
-                        ) : (
-                          ""
-                        )}
-                      </Form>
+                      <form>
+                        <ValidatedInfoForm />
+                      </form>
+                      <span
+                        tabIndex={0}
+                        onClick={toggleEditor}
+                        class="fas fa-pen-square toggle-editor"
+                      ></span>
                     </div>
                   </CardBody>
-                </CardBody>
-              </Card>
-              <Card className="userCard">
-                <CardBody className="userCardBody">
-                  <CardTitle className="userCardTitle">
-                    <h2 className="comingSoonHeader">More Coming Soon!</h2>
-                  </CardTitle>
-                  <CardBody className="userCardBody"></CardBody>
                 </CardBody>
               </Card>
             </div>

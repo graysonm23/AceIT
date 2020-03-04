@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ValidatedSignupForm from "./validatedSignupForm";
-import "../css/signup.css";
+import "./signup.css";
 import {
   Container,
   Row,
@@ -15,7 +15,7 @@ import {
   input,
   Button
 } from "reactstrap";
-import API from "../utils/API";
+import API from "../../utils/API";
 
 function Signup() {
   const [email, setEmail] = useState([]);
@@ -36,8 +36,8 @@ function Signup() {
       .catch(err => console.log("Unable to save email ", err));
   };
   return (
-    <div className="homepage">
-      <Container className="homeContainer">
+    <div className="signupPage">
+      <Container className="signupContainer">
         <Row>
           <Col className="SignupCol">
             <Card className="SignupCard">
