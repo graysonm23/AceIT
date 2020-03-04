@@ -31,20 +31,58 @@ router
 
 router.route("/api/auth/signin").post(function(req, res) {
   async () => {
-    const promise = userController.findByEmail;
+    const email = req.body.email;
+    const promise = userController.findByEmail(email, dbUsers);
     await promise;
+    if (dbUsers) {
+      //if account exists
+      bcrypt.compare(req.body.password, dbUsers.password, function(
+        //compare hashed password
+        err,
+        response
+      ) {
+        if (err) {
+
+          return res.json({
+            success: false,
+            message: "passwords do not match"
+          });
+        }
+        if (response) {
+          //if passwords match
+          // res.json(dbUsers);
+          var user = dbUsers._id;
+          jwt.sign(
+            { user: user },
+            process.env.SECRET_KEY,
+            { expiresIn: "10 days" } /*sets token to expire in 30 seconds*/,
+            function(err, token) {
+              res.json({ token: token, message: "success" });
+            }
+          );
+
+          // res.render("userprofile", { msg: "Email has been sent" });
+        }
+      });
+    } else {
+      //if account does not exist
+      return res.json({ success: false, message: "no account found" });
+    }
   };
 });
 
 router.route("/api/auth/signup").post(function(req, res) {
+  console.log(req.body);
   const myPlaintextPassword = req.body.password;
+  const name = req.body.name;
+  const email = req.body.email;
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
       if (err) {
         throw err;
-      }
-      userController.create(hash);
+      } console.log(hash)
+      userController.create(name, email, hash);
     });
   });
 });

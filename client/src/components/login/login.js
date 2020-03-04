@@ -1,10 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import API from "../../utils/API";
 
-const Example = props => {
+const Signin = props => {
+  const [email, setEmail] = useState([]);
+  const [password, setPassword] = useState([]);
+  const handleEmailSubmit = event => {
+    event.preventDefault();
+    // axios.post("/api/auth/signup");
+    console.log(event);
+    const userObj = {
+      email: email,
+      password: password
+    };
+    API.signUpRoute(userObj)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log("Unable to save email ", err));
+  };
   return (
     <div>
-      <Form className="loginForm">
+      <Form className="loginForm" onSubmit={handleEmailSubmit}>
         <Row className="loginRow">
           <Col className="loginCol" md={6}>
             <FormGroup>
@@ -18,6 +35,7 @@ const Example = props => {
                   name="email"
                   id="exampleEmail"
                   placeholder="Please place email address here"
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
             </FormGroup>
@@ -34,6 +52,7 @@ const Example = props => {
                   name="password"
                   id="examplePassword"
                   placeholder="Please place password here"
+                  onChange={e => setPassword(e.target.value)}
                 />
               </div>
             </FormGroup>
@@ -46,4 +65,4 @@ const Example = props => {
   );
 };
 
-export default Example;
+export default Signin;
