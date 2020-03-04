@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/UserProfile.css";
+import ValidatedInfoForm from "./changeInfoForm";
 import {
   Container,
   Row,
@@ -63,7 +64,6 @@ function Profile() {
   const handleUserInfoSubmit = event => {
     event.preventDefault();
     setEditor(false);
-    console.log("clicked");
     console.log(name, password, email);
   };
   const togglePasswordVisibility = () => {
@@ -76,14 +76,14 @@ function Profile() {
     setEditor(!editor);
   };
   return (
-    <div className="userProfile">
+    <div className="homepage">
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
             {name.length && saved ? (
               <h1>{nameHandler(name)}'s Profile</h1>
             ) : (
-              <h1>My Profile</h1>
+              <h1 className="profileTitle">My Profile</h1>
             )}
             <div className="wrapperDiv">
               <Card className="userCard">
@@ -91,7 +91,7 @@ function Profile() {
                   <CardTitle className="userCardTitle">
                     <h2>Profile Picture</h2>
                   </CardTitle>
-                  <CardBody className="userCardBody">
+                  <CardBody className="userCardInnerBody">
                     <div id="userPWidget">
                       {image.length ? (
                         <div className="imgDiv">
@@ -129,11 +129,22 @@ function Profile() {
                         }}
                       />
                     </div>
+                    <button
+                      className="profileButton"
+                      onClick={handleImageSubmit}
+                      type="submit"
+                    >
+                      Save Image
+                    </button>
                   </CardBody>
                 </CardBody>
-                <Button id="userSave" onClick={handleImageSubmit} type="submit">
+                {/* <button
+                  className="profileButton"
+                  onClick={handleImageSubmit}
+                  type="submit"
+                >
                   Save Image
-                </Button>
+                </button> */}
               </Card>
               <Card className="userCard">
                 <CardBody className="userCardBody">
@@ -143,10 +154,12 @@ function Profile() {
                   ) : (
                     <div className="boardsHeader">
                       <h2>You have no boards right now</h2>
-                      <Button className="userCreateButton">Create One!</Button>
+                      <button className="createBoardButton">
+                        Create Board
+                      </button>
                     </div>
                   )}
-                  <CardBody className="userCardBody">
+                  <CardBody className="userCardInnerBody">
                     {boards.length ? (
                       <ListGroup>
                         {boards.map((board, index) => (
@@ -176,12 +189,12 @@ function Profile() {
                   </CardBody>
                 </CardBody>
               </Card>
-              <Card className="userCard">
+              <Card className="userInformationCard">
                 <CardBody className="userCardBody">
                   <CardTitle className="userCardTitle">
                     <h2>My Information</h2>
                   </CardTitle>
-                  <CardBody className="userCardBody">
+                  <CardBody className="userCardInnerBody">
                     <div>
                       <Form onSubmit={handleUserInfoSubmit}>
                         <InputGroup
@@ -276,14 +289,6 @@ function Profile() {
                       </Form>
                     </div>
                   </CardBody>
-                </CardBody>
-              </Card>
-              <Card className="userCard">
-                <CardBody className="userCardBody">
-                  <CardTitle className="userCardTitle">
-                    <h2 className="comingSoonHeader">More Coming Soon!</h2>
-                  </CardTitle>
-                  <CardBody className="userCardBody"></CardBody>
                 </CardBody>
               </Card>
             </div>
