@@ -28,9 +28,13 @@ function Profile() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [saved, setSaved] = useState(false);
   useEffect(() => {
     imageDidMount();
   });
+  const userDidMount = () => {
+    setSaved(true);
+  };
   const imageDidMount = () => {
     // API.getBooks(image)
     //   .then(res => {
@@ -59,6 +63,7 @@ function Profile() {
   const handleUserInfoSubmit = event => {
     event.preventDefault();
     setEditor(false);
+    console.log("clicked");
     console.log(name, password, email);
   };
   const togglePasswordVisibility = () => {
@@ -75,10 +80,10 @@ function Profile() {
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
-            {name.length ? (
-              <h1>{nameHandler(name)}'s Settings</h1>
+            {name.length && saved ? (
+              <h1>{nameHandler(name)}'s Profile</h1>
             ) : (
-              <h1>My Settings</h1>
+              <h1>My Profile</h1>
             )}
             <div className="wrapperDiv">
               <Card className="userCard">
@@ -185,7 +190,12 @@ function Profile() {
                         >
                           <span
                             tabIndex={0}
-                            onClick={toggleEditor}
+                            onClick={() => {
+                              toggleEditor();
+                              {
+                                !name.length ? setSaved(false) : setSaved(true);
+                              }
+                            }}
                             class="fas fa-pen-square toggle-editor"
                           ></span>
                           <label>Name: </label>
@@ -247,7 +257,19 @@ function Profile() {
                           )}
                         </InputGroup>
                         {editor ? (
-                          <Button onClick={handleUserInfoSubmit}>Save</Button>
+                          <Button
+                            onClick={() => {
+                              handleUserInfoSubmit();
+                              setSaved(true);
+                            }}
+                            // disabled={
+                            //   name && email && password && confirmPassword
+                            //     ? "false"
+                            //     : "true"
+                            // }
+                          >
+                            Save
+                          </Button>
                         ) : (
                           ""
                         )}

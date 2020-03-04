@@ -8,7 +8,6 @@ import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
-import Home from "./pages/NewUS";
 import dashboard from "./pages/dashboard";
 
 function App() {
