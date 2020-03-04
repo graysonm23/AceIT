@@ -1,0 +1,181 @@
+.homepage {
+  width: 100%;
+  height: 100%;
+  background-color: #0addbf;
+}
+
+.homeContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.homeCol {
+  background: #0addbf;
+  width: 100%;
+  height: 100%;
+}
+
+.homeCardTitle {
+  text-align: center;
+}
+
+.homeCardBody {
+  text-align: center;
+}
+
+.signup-input {
+  background-color: white !important;
+  margin-bottom: 10px;
+}
+
+.signupTitle {
+  color: #3f3e3e;
+}
+
+.signupSubtitle {
+  color: #3f3e3e;
+}
+
+h1 {
+  text-align: center;
+}
+
+label,
+input {
+  display: block;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  height: 22px;
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #777;
+}
+
+input.error {
+  border-color: red;
+}
+
+.input-feedback {
+  color: rgb(235, 54, 54);
+  margin-top: -15px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #0addbf;
+  color: white;
+  border: 1px solid #0addbf;
+  background-color: 250ms;
+  border-radius: 4px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #0addbf;
+}
+
+.SignupCard {
+  width: 600px;
+  left: 50%;
+  transform: translate(-50%, 5%);
+}
+
+.userContainer {
+  background-color: #0addbf;
+}
+
+.profileTitle {
+  margin-top: 20px;
+  font-weight: bolder;
+  color: white;
+  text-shadow: -1px 0px 4px black;
+}
+
+.profileButton {
+  float: left;
+  width: 185px;
+  margin-bottom: 10px;
+  margin-left: 90px;
+  border-radius: 4px;
+  margin-top: 240px;
+}
+
+.createBoardButton {
+  float: left;
+  width: 185px;
+  margin-bottom: 10px;
+  margin-left: 115px;
+  margin-top: 215px;
+  border-radius: 4px;
+}
+
+.fa-pen-square:before {
+  content: "\f14b";
+  color: #0addbf;
+}
+
+.fa-pen-square:hover {
+  cursor: pointer;
+}
+
+.myInformationButton {
+  float: left;
+  width: 185px;
+  margin-bottom: 10px;
+  margin-left: 90px;
+  margin-top: 7px;
+  border-radius: 4px;
+}
+
+.userCardBody {
+  border-style: outset;
+  border-width: 2px;
+}
+
+.userInformationCard {
+  min-height: 300px;
+  min-width: 1006px;
+  margin: 20px 0px 20px 0px;
+}
+
+.infoSubButton {
+  float: left;
+  width: 185px;
+  margin-left: 365px;
+  border-radius: 4px;
+}
+
+.infoCol1 {
+  background-color: white;
+}
+
+.infoCol2 {
+  background-color: white;
+}
+
+.infoForm {
+}
+
+.toggle-editor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #3891ff;
+  font-size: 24px;
+}
+
+.signupPage {
+  background-color: #0addbf;
+  width: 100% !important;
+  height: 100% !important;
+}

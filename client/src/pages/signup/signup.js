@@ -1,10 +1,25 @@
 import React, { useState } from "react";
 import "../css/signup.css";
-import { Container, Row, Col, Card, CardBody, CardTitle } from "reactstrap";
 import API from "../utils/API";
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import ValidatedSignupForm from "./validatedSignupForm";
+import "./signup.css";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardTitle,
+  button,
+  form,
+  FormGroup,
+  label,
+  input,
+  Button
+} from "reactstrap";
 
 function Signup() {
   const [email, setEmail] = useState([]);
@@ -16,11 +31,11 @@ function Signup() {
     event.preventDefault();
     console.log(email, password, confirmPassword, name);
     // axios.post("/api/auth/signup");
-
     console.log(event);
     const userObj = {
       email: email,
-      password: password
+      password: password,
+      name: name
     };
     API.signUpRoute(userObj)
       .then(res => {
@@ -29,9 +44,9 @@ function Signup() {
       .catch(err => console.log("Unable to save email ", err));
   };
   return (
-    <div className="homepage">
-      <Container className="homeContainer">
-        <Row className="SignupRow">
+    <div className="signupPage">
+      <Container className="signupContainer">
+        <Row>
           <Col className="SignupCol">
             <Card className="SignupCard">
               <CardBody className="signUpCardBody">
@@ -55,7 +70,6 @@ function Signup() {
                     //   } else if (!EmailValidator.validate(values.email)) {
                     //     errors.email = "Invalid email address";
                     //   }
-
                     //   const passwordRegex = /(?=.*[0-9])/;
                     //   if (!values.password) {
                     //     errors.password = "Required";
@@ -64,11 +78,9 @@ function Signup() {
                     //   } else if (!passwordRegex.test(values.password)) {
                     //     errors.password = "Invalida password. Must contain one number";
                     //   }
-
                     //   return errors;
                     // }}
                     //********Using Yum for validation********/
-
                     validationSchema={Yup.object().shape({
                       name: Yup.string()
                         .min(2, "Too Short")
@@ -160,5 +172,4 @@ function Signup() {
     </div>
   );
 }
-
 export default Signup;

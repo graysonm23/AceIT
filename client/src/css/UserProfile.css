@@ -1,19 +1,22 @@
-.userProfile {
+/* .userProfile {
   background-color: #0addbf;
   background-position: center;
   background-size: cover;
-  overflow: hidden;
-}
-.userCol {
+} */
+
+/* .userCol {
+  margin-top: 80px;
   width: 100%;
   background: none;
   text-align: center;
 }
+
 .wrapperDiv {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .userCard {
   min-height: 400px;
   min-width: 450px;
@@ -21,48 +24,106 @@
   max-width: 450px;
   margin: 20px 0px 20px 0px;
 }
+*/
+.userCard {
+  width: 450px;
+  height: 450px;
+  flex-grow: 1;
+  margin: 50px;
+  position: relative;
+}
+.userCardTitle {
+  text-align: center;
+}
+.boardsHeader {
+  text-align: center;
+}
+.userCardInnerBody {
+  height: 100%;
+  width: 100%;
+}
+.wrapperDiv {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.userInformationCard {
+  margin: 0px 50px 50px 50px;
+  flex-grow: 2;
+}
+#userPWidget {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userPicture {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+.profileButton {
+  position: absolute;
+}
+
+/*
 #userPWidget {
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
 }
+
 .userPicture {
   height: 150px;
   width: 150px;
   border-radius: 50%;
 }
+
 .userRow {
   height: 100%;
 }
+
 .userSettingsContainer {
-  height: 100vh;
+  height: 100%;
   background-color: white;
   position: relative;
-}
+} */
+
 #userSave {
   border: none;
   background-color: #5882e7;
   margin: 0 auto;
 }
+
 #userSave:hover {
   background-color: #3891ff !important;
 }
-.userCreateButton {
+
+/* .userCreateButton {
   border: none;
   background-color: #5882e7;
   position: absolute;
   bottom: 0;
   right: 35%;
   margin: 0 auto;
-}
+} */
+
 .userCreateButton:hover {
   background-color: #3891ff !important;
 }
+
 .inputGroup {
   display: flex;
   flex-direction: column;
 }
+
 .inputName,
 .inputEmail,
 .inputPassword {
@@ -70,6 +131,7 @@
   outline: none;
   cursor: default;
 }
+
 .inputName:focus,
 .inputEmail:focus,
 .inputPassword:focus {
@@ -77,6 +139,7 @@
   outline: none;
   cursor: default;
 }
+
 .toggle-password {
   position: absolute;
   right: 0;
@@ -84,6 +147,7 @@
   bottom: 67px;
   cursor: pointer;
 }
+
 .toggle-password-2 {
   position: absolute;
   right: 0;
@@ -91,16 +155,19 @@
   bottom: 7px;
   cursor: pointer;
 }
+
 .inputPassword {
   position: relative;
 }
-.comingSoonHeader {
+
+/* .comingSoonHeader {
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   color: gray;
-}
+} */
+
 .toggle-editor {
   position: absolute;
   top: 0;

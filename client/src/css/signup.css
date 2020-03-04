@@ -1,37 +1,3 @@
-.homepage {
-  width: 100%;
-  height: 110vh;
-  background-color: #0addbf;
-}
-
-.homeContainer {
-  height: 100vh;
-  width: 100%;
-}
-
-.homeCol {
-  background: none;
-  width: 100%;
-  height: 100vh;
-}
-
-.homeCard {
-  max-width: 500px;
-  height: 77vh;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 10%);
-  position: relative;
-}
-
-.homeCardTitle {
-  text-align: center;
-}
-
-.homeCardBody {
-  text-align: center;
-}
-
 #buttonCancel {
   float: left;
   margin-left: 18%;
@@ -48,20 +14,20 @@
   margin-bottom: 10px;
 }
 
-.signupTitle {
+/* .signupTitle {
   color: #3f3e3e;
 }
 .signupSubtitle {
   color: #3f3e3e;
-}
-
+} */
+/* 
 .row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
   margin-top: -5%;
-}
+} */
 
 .emailForm {
   display: block;
@@ -124,3 +90,23 @@ button:hover {
   background-color: white;
   color: #0addbf;
 }
+
+/* .signUpCardBody {
+  text-align: center;
+  min-height: 700px;
+}
+
+.SignupCol {
+  background: none;
+  width: 100%;
+  height: 100%;
+}
+
+.SignupCard {
+  max-width: 40vw;
+  height: 85vh;
+  top: 115px;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  position: relative;
+} */
