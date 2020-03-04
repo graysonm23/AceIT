@@ -16,10 +16,11 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/card" component={Card} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/settings" component={Settings} />
           <Route exact path="/userprofile" component={Profile} />
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/card" component={Card} />
+          <Route exact path="/" component={Login} />
           <Route component={NoMatch} />
         </Switch>
       </div>
