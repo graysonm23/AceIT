@@ -7,9 +7,8 @@ import Card from "./components/card";
 import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Signup from "./pages/signup";
+import Signup from "./pages/signup/signup.js";
 import Home from "./pages/NewUS";
-import dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/dashboard" component={dashboard} />
           <Route exact path="/userprofile" component={Profile} />
           <Route exact path="/settings" component={Settings} />
           <Route exact path="/signup" component={Signup} />

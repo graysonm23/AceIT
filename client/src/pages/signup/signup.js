@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import "../css/signup.css";
-import { Container, Row, Col, Card, CardBody, CardTitle } from "reactstrap";
 import API from "../utils/API";
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import ValidatedSignupForm from "./validatedSignupForm";
+import "./signup.css";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardTitle,
+  button,
+  form,
+  FormGroup,
+  label,
+  input,
+  Button
+} from "reactstrap";
+
 function Signup() {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
@@ -28,9 +44,9 @@ function Signup() {
       .catch(err => console.log("Unable to save email ", err));
   };
   return (
-    <div className="homepage">
-      <Container className="homeContainer">
-        <Row className="SignupRow">
+    <div className="signupPage">
+      <Container className="signupContainer">
+        <Row>
           <Col className="SignupCol">
             <Card className="SignupCard">
               <CardBody className="signUpCardBody">
