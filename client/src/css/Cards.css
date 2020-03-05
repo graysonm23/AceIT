@@ -1,0 +1,14 @@
+.pageWrapper {
+  background-color: #0addbf;
+}
+.CardTitleBoard {
+  text-align: center;
+  padding-top: 80px;
+}
+.ContainerBoard {
+  background-color: aliceblue;
+  height: 100%;
+  width: 100%;
+  margin-left: 95px;
+  margin-right: 100px;
+}

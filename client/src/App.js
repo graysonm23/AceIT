@@ -9,22 +9,26 @@ import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
 import Landing from "./pages/Landing";
-// import dashboard from "./pages/dashboard";
+import Card from "./pages/board";
+import "./css/Cards.css";
 
 function App() {
   return (
-    <Router>
-      <Nav />
-      <Switch>
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/settings" component={Settings} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/board" component={Boardeditor} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={Landing} />
-        <Route component={NoMatch} />
-      </Switch>
-    </Router>
+    <div className="PageWrapper">
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/board" component={Boardeditor} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/cards" component={Card} />
+          <Route exact path="/" component={Landing} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
