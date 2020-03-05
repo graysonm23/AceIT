@@ -12,10 +12,12 @@ import {
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
 import $ from "jquery";
+import KeyboardEventHandler from "react-keyboard-event-handler";
 
 function Home() {
   const [image, setImage] = useState([]);
   const [hide, setHide] = useState(false);
+  const [enter, setEnter] = useState(false);
   const openImageHandler = event => {
     $(
       "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
@@ -33,7 +35,7 @@ function Home() {
     }
   };
   return (
-    <div path="Settings" className="homepage">
+    <div path="Settings" className="signupBackground">
       <Container className="homeContainer">
         <Row className="homeRow">
           <Col className="homeCol">
@@ -50,13 +52,24 @@ function Home() {
                   <div id="userPWidget">
                     {image.length ? (
                       <div className="imgDiv">
-                        <img
-                          tabIndex={0}
-                          onClick={openImageHandler}
-                          className="userPicture"
-                          alt="user pic"
-                          src={image}
-                        />
+                        <KeyboardEventHandler
+                          handleKeys={["enter"]}
+                          onKeyEvent={(key, e) => {
+                            $(
+                              "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
+                            ).click();
+                            console.log(e);
+                          }}
+                        >
+                          <img
+                            // onFocus={openOnEnter}
+                            tabIndex={0}
+                            onClick={openImageHandler}
+                            className="userPicture"
+                            alt="user pic"
+                            src={image}
+                          />
+                        </KeyboardEventHandler>
                       </div>
                     ) : (
                       ""
