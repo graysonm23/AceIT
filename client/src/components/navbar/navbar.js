@@ -19,7 +19,6 @@ import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import RecentActorsIcon from "@material-ui/icons/RecentActors";
 import HorizontalSplitIcon from "@material-ui/icons/HorizontalSplit";
-import NavLogo from "../../images/aceitLogo.png";
 import "./navbar.css";
 
 const drawerWidth = 240;

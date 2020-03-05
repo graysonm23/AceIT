@@ -16,7 +16,7 @@ import $ from "jquery";
 function Home() {
   const [image, setImage] = useState([]);
   const [hide, setHide] = useState(false);
-  const openImageHandler = event => {
+  const openImageHandler = () => {
     $(
       "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
     ).click();

@@ -49,15 +49,7 @@ function Profile() {
       })
       .catch(err => console.log("Unable to load user ", err));
   };
-  const imageDidMount = () => {
-    // API.getBooks(image)
-    //   .then(res => {
-    //     console.log(res.data.items);
-    //     console.log(res.data);
-    //     setImage(res.data);
-    //   })
-    // .catch(err => console.log(err));
-  };
+  const imageDidMount = () => {};
   const handleImageSubmit = event => {
     event.preventDefault();
     console.log("images ", image);
