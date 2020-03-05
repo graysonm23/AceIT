@@ -8,11 +8,8 @@ import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
-<<<<<<< HEAD
 import Landing from "./pages/Landing";
 // import dashboard from "./pages/dashboard";
-=======
->>>>>>> 0673ddf1d05769e26381f414e4ba5f72aeaa2be6
 
 function App() {
   return (
@@ -24,10 +21,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/board" component={Boardeditor} />
         <Route exact path="/login" component={Login} />
-<<<<<<< HEAD
         <Route exact path="/" component={Landing} />
-=======
->>>>>>> 0673ddf1d05769e26381f414e4ba5f72aeaa2be6
         <Route component={NoMatch} />
       </Switch>
     </Router>
