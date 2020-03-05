@@ -1,6 +1,8 @@
 .wrapperLanding {
   background-image: url("https://cdn.pixabay.com/photo/2020/02/16/21/26/middle-east-4854847_1280.jpg");
   filter: brightness(80%);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .caption {

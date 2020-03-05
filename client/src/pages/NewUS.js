@@ -12,12 +12,11 @@ import {
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
 import $ from "jquery";
-import KeyboardEventHandler from "react-keyboard-event-handler";
 
 function Home() {
   const [image, setImage] = useState([]);
   const [hide, setHide] = useState(false);
-  const openImageHandler = event => {
+  const openImageHandler = () => {
     $(
       "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
     ).click();

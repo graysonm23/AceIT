@@ -50,7 +50,7 @@ function Profile() {
       .catch(err => console.log("Unable to load user ", err));
   };
   const imageDidMount = () => {
-    API.getBooks(image)
+    API.signInRoute(image)
       .then(res => {
         console.log(res.data.items);
         console.log(res.data);
