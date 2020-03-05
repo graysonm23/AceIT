@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/UserProfile.css";
-import ValidatedInfoForm from "./changeInfoForm";
 import {
   Container,
   Row,
@@ -19,6 +18,7 @@ import {
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
 import $ from "jquery";
+import CreateBoardModal from "./boardeditor/modal/modal";
 
 function Profile() {
   const [image, setImage] = useState([]);
@@ -194,7 +194,7 @@ function Profile() {
                     )}
                   </CardBody>
                 </CardBody>
-                <button className="createBoardButton">Create Board</button>
+                <CreateBoardModal></CreateBoardModal>
               </Card>
               <Card className="userInformationCard">
                 <CardBody className="userCardBody">

@@ -39,7 +39,7 @@ function Home() {
       <Container className="homeContainer">
         <Row className="homeRow">
           <Col className="homeCol">
-            <Card className="homeCard">
+            <Card className="SignupCard">
               <CardBody>
                 <CardTitle className="homeCardTitle">
                   {image.length > 0 ? (

@@ -25,8 +25,12 @@
     "path": "^0.12.7",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.16",
+<<<<<<< HEAD
     "react-dom": "^16.12.0",
     "react-keyboard-event-handler": "^1.5.4",
+=======
+    "react-dom": "^16.13.0",
+>>>>>>> e720f845d256978284e3b6244f6922d86ffd00fc
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "reactstrap": "^8.4.1",

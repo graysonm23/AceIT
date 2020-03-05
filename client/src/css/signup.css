@@ -84,6 +84,7 @@ button {
   color: white;
   border: 1px solid #0addbf;
   background-color: 250ms;
+  border-radius: 5px;
 
 }
 
@@ -103,7 +104,6 @@ button:hover {
   height: 100%;
 }
 
-.signupTitle {}
 
 .SignupCard {
   width: 600px;
@@ -121,4 +121,5 @@ button:hover {
   border: 1px solid #0addbf;
   background-color: 250ms;
   margin-top: 10px;
+  border-radius: 5px;
 }
