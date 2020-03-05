@@ -33,11 +33,11 @@ function Home() {
     }
   };
   return (
-    <div path="Settings" className="homepage">
+    <div path="Settings" className="signupBackground">
       <Container className="homeContainer">
         <Row className="homeRow">
           <Col className="homeCol">
-            <Card className="homeCard">
+            <Card className="SignupCard">
               <CardBody>
                 <CardTitle className="homeCardTitle">
                   {image.length > 0 ? (
