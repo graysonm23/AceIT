@@ -12,10 +12,17 @@ module.exports = {
       .then(dbUserId => res.json(dbUserId))
       .catch(err => res.status(422).json(err));
   },
-  findByEmail: function(req, res){
-    db.User.find({email: req}, function(dbFindEmail){
-      res.json(dbFindEmail);
-    })
+  findByEmail: function(email) {
+    return new Promise(function(resolve, reject) {
+      console.log(email);
+      db.User.findOne({ email: email }).exec(function(err, dbFindEmail) {
+        if (err) {
+          reject(err);
+        }
+        console.log(dbFindEmail);
+        resolve(dbFindEmail);
+      });
+    });
   },
   create: function(name, email, hash, res) {
     db.User.create({
@@ -26,13 +33,16 @@ module.exports = {
     })
       .then(dbUserCreate => {
         console.log("This is dbModel: ", dbUserCreate);
-         return dbUserCreate;
+        return dbUserCreate;
       })
       .catch(err => console.log(err));
   },
   update: function(req, res) {
     db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbUserUpdate => {console.log(dbUserUpdate); res.json(dbUserUpdate)})
+      .then(dbUserUpdate => {
+        console.log(dbUserUpdate);
+        res.json(dbUserUpdate);
+      })
       .catch(err => res.json("user did not update"));
   }
 };

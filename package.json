@@ -12,6 +12,7 @@
     "bootstrap": "^4.4.1",
     "concurrently": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
+    "local-storage": "^2.0.0",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.9.1",
     "nodemon": "^2.0.2",
