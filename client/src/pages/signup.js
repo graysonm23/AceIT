@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../css/signup.css";
 import { Container, Row, Col, Card, CardBody, CardTitle } from "reactstrap";
-import API from "../utils/API";
 import ValidatedSignupForm from "./validatedSignupForm";
 
 function Signup() {
@@ -12,9 +11,6 @@ function Signup() {
           <Col className="SignupCol">
             <Card className="SignupCard">
               <CardBody className="signUpCardBody">
-                <CardTitle className="homeCardTitle">
-                  <h1 className="signupTitle">Signup</h1>
-                </CardTitle>
                 <CardBody className="homeCardBody">
                   <ValidatedSignupForm />
                 </CardBody>

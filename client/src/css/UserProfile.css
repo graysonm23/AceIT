@@ -5,16 +5,20 @@
   margin: 50px;
   position: relative;
 }
+
 .userCardTitle {
   text-align: center;
 }
+
 .boardsHeader {
   text-align: center;
 }
+
 .userCardInnerBody {
   height: 100%;
   width: 100%;
 }
+
 .wrapperDiv {
   height: 100%;
   width: 100%;
@@ -27,6 +31,7 @@
   margin: 0px 50px 50px 50px;
   flex-grow: 2;
 }
+
 #userPWidget {
   position: relative;
   width: 100%;
@@ -42,16 +47,20 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
 .imgDiv {
   position: absolute;
   top: 10px;
 }
+
 .profileButton {
   margin: 0 auto;
 }
+
 .createBoardButton {
   margin: 0 auto;
 }
+
 .saveInfoButton {
   /* position: absolute; */
   display: block;
@@ -119,4 +128,12 @@
   right: 0;
   color: #3891ff;
   font-size: 24px;
+}
+
+.profileButton {
+  margin-bottom: 15px;
+}
+
+.createBoardButton {
+  margin-bottom: 15px;
 }

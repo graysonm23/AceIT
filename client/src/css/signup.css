@@ -1,3 +1,10 @@
+.navHeader {
+  font-weight: bolder;
+  font-size: 3rem;
+  margin-top: 2px;
+  color: rgb(61, 61, 61);
+}
+
 .signupBackground {
   height: 100vh;
   width: 100vw;
@@ -77,6 +84,7 @@ button {
   color: white;
   border: 1px solid #0addbf;
   background-color: 250ms;
+
 }
 
 button:hover {

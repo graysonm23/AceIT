@@ -118,11 +118,36 @@ export default function MiniDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography className="pageHeading" variant="h3" noWrap>
-            {window.location.pathname === "/profile" ? <h6>Profile</h6> : ""}
-            {window.location.pathname === "/settings" ? <h6>Settings</h6> : ""}
-            {window.location.pathname === "/cards" ? <h6>Cards</h6> : ""}
-            {window.location.pathname === "/dashboard" ? <h6>Boards</h6> : ""}
-            {window.location.pathname === "/" ? <h6>Login</h6> : ""}
+            {window.location.pathname === "/profile" ? (
+              <h6 className="navHeader">My Profile</h6>
+            ) : (
+              ""
+            )}
+            {window.location.pathname === "/settings" ? (
+              <h6 className="navHeader">Settings</h6>
+            ) : (
+              ""
+            )}
+            {window.location.pathname === "/cards" ? (
+              <h6 className="navHeader">Cards</h6>
+            ) : (
+              ""
+            )}
+            {window.location.pathname === "/dashboard" ? (
+              <h6 className="navHeader">Boards</h6>
+            ) : (
+              ""
+            )}
+            {window.location.pathname === "/" ? (
+              <h6 className="navHeader">Login</h6>
+            ) : (
+              ""
+            )}
+            {window.location.pathname === "/signup" ? (
+              <h6 className="navHeader">Signup</h6>
+            ) : (
+              ""
+            )}
           </Typography>
         </Toolbar>
       </AppBar>
