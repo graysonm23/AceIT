@@ -37,29 +37,37 @@ function Profile() {
   const [tokenIsValid, setBoolToken] = useState(false);
   useEffect(() => {
     imageDidMount();
+    userDidMount();
   });
   const userDidMount = () => {
     setSaved(true);
+    API.signInRoute(name, email, password)
+      .then(res => {
+        setEmail(res.data.email);
+        setPassword(res.data.password);
+        setName(res.data.name);
+      })
+      .catch(err => console.log("Unable to load user ", err));
   };
   const imageDidMount = () => {
-    // API.getBooks(image)
-    //   .then(res => {
-    //     console.log(res.data.items);
-    //     console.log(res.data);
-    //     setImage(res.data);
-    //   })
-    //   .catch(err => console.log(err));
+    API.getBooks(image)
+      .then(res => {
+        console.log(res.data.items);
+        console.log(res.data);
+        setImage(res.data);
+      })
+      .catch(err => console.log(err));
   };
   const handleImageSubmit = event => {
     event.preventDefault();
     console.log("images ", image);
-    // if (image.length) {
-    //   API.saveImage({ image })
-    //     .then(res => {
-    //       console.log(res);
-    //     })
-    //     .catch(err => console.log("Unable to save image ", err));
-    // }
+    if (image.length) {
+      API.saveImage({ image })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => console.log("Unable to save image ", err));
+    }
   };
 
   const handleCreateBoard = e => {
@@ -303,11 +311,6 @@ function Profile() {
                               handleUserInfoSubmit();
                               setSaved(true);
                             }}
-                            // disabled={
-                            //   name && email && password && confirmPassword
-                            //     ? "false"
-                            //     : "true"
-                            // }
                           >
                             Save
                           </Button>

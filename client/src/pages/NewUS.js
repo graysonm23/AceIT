@@ -17,7 +17,6 @@ import KeyboardEventHandler from "react-keyboard-event-handler";
 function Home() {
   const [image, setImage] = useState([]);
   const [hide, setHide] = useState(false);
-  const [enter, setEnter] = useState(false);
   const openImageHandler = event => {
     $(
       "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
@@ -52,24 +51,14 @@ function Home() {
                   <div id="userPWidget">
                     {image.length ? (
                       <div className="imgDiv">
-                        <KeyboardEventHandler
-                          handleKeys={["enter"]}
-                          onKeyEvent={(key, e) => {
-                            $(
-                              "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
-                            ).click();
-                            console.log(e);
-                          }}
-                        >
-                          <img
-                            // onFocus={openOnEnter}
-                            tabIndex={0}
-                            onClick={openImageHandler}
-                            className="userPicture"
-                            alt="user pic"
-                            src={image}
-                          />
-                        </KeyboardEventHandler>
+                        <img
+                          // onFocus={openOnEnter}
+                          tabIndex={0}
+                          onClick={openImageHandler}
+                          className="userPicture"
+                          alt="user pic"
+                          src={image}
+                        />
                       </div>
                     ) : (
                       ""
