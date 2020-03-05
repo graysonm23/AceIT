@@ -102,14 +102,6 @@ function Profile() {
     setEditor(!editor);
   };
 
-  if (tokenIsValid) {
-    // eslint-disable-next-line no-unused-expressions
-    <Redirect
-      to={{
-        pathname: "/cards"
-      }}
-    />;
-  }
   return (
     <div className="signupBackground">
       <Container className="userContainer">

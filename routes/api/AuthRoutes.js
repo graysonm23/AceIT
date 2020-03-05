@@ -112,7 +112,7 @@ function jwtVerify(req, res) {
       userController.findById(authData.userid).then(function(response) {
         console.log({ response });
         console.log("JWT has Verified your token");
-        res.json(response);
+        return response;
       });
     }
   });
