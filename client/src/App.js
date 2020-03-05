@@ -8,6 +8,7 @@ import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
+import Landing from "./pages/Landing";
 // import dashboard from "./pages/dashboard";
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
         <Route exact path="/settings" component={Settings} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/cards" component={Card} />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Landing} />
         <Route component={NoMatch} />
       </Switch>
     </Router>

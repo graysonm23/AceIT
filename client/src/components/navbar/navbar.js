@@ -19,6 +19,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import RecentActorsIcon from "@material-ui/icons/RecentActors";
 import HorizontalSplitIcon from "@material-ui/icons/HorizontalSplit";
+import NavLogo from "../../images/aceitLogo.png";
+import "./navbar.css";
 
 const drawerWidth = 240;
 
@@ -122,7 +124,8 @@ export default function MiniDrawer(props) {
             {window.location.pathname === "/settings" ? <h6>Settings</h6> : ""}
             {window.location.pathname === "/cards" ? <h6>Cards</h6> : ""}
             {window.location.pathname === "/dashboard" ? <h6>Boards</h6> : ""}
-            {window.location.pathname === "/" ? <h6>Login</h6> : ""}
+            {window.location.pathname === "/login" ? <h6>Login</h6> : ""}
+            {window.location.pathname === "/" ? <h6>Welcome</h6> : ""}
           </Typography>
         </Toolbar>
       </AppBar>
