@@ -138,7 +138,7 @@ export default function MiniDrawer(props) {
             ) : (
               ""
             )}
-            {window.location.pathname === "/" ? (
+            {window.location.pathname === "/login" ? (
               <h6 className="navHeader">Login</h6>
             ) : (
               ""

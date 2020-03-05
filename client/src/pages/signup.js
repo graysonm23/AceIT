@@ -11,9 +11,7 @@ function Signup() {
           <Col className="SignupCol">
             <Card className="SignupCard">
               <CardBody className="signUpCardBody">
-                <CardBody className="homeCardBody">
-                  <ValidatedSignupForm />
-                </CardBody>
+                <ValidatedSignupForm />
               </CardBody>
             </Card>
           </Col>
