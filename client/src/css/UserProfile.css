@@ -132,8 +132,25 @@
 
 .profileButton {
   margin-bottom: 15px;
+  border-radius: 5px;
+
 }
 
 .createBoardButton {
   margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.saveInfoButton {
+  padding: 10px 15px;
+  background-color: #0addbf;
+  color: white;
+  border: 1px solid #0addbf;
+  border-radius: 5px;
+}
+
+.saveInfoButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #0addbf;
 }

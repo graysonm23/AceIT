@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/UserProfile.css";
-import ValidatedInfoForm from "./changeInfoForm";
 import {
   Container,
   Row,
@@ -21,6 +20,7 @@ import { Widget } from "@uploadcare/react-widget";
 import $ from "jquery";
 import ls from "local-storage";
 import { Redirect } from "react-router-dom";
+import CreateBoardModal from "./boardeditor/modal/modal";
 
 function Profile() {
   const [image, setImage] = useState([]);
@@ -173,13 +173,6 @@ function Profile() {
                         }}
                       />
                     </div>
-                    {/* <button
-                      className="profileButton"
-                      onClick={handleImageSubmit}
-                      type="submit"
-                    >
-                      Save Image
-                    </button> */}
                   </CardBody>
                 </CardBody>
                 <button
@@ -229,12 +222,7 @@ function Profile() {
                     )}
                   </CardBody>
                 </CardBody>
-                <button
-                  className="createBoardButton"
-                  onClick={handleCreateBoard}
-                >
-                  Create Board
-                </button>
+                <CreateBoardModal></CreateBoardModal>
               </Card>
               <Card className="userInformationCard">
                 <CardBody className="userCardBody">
