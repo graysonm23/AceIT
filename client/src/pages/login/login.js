@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import {
   Col,
   Row,
@@ -17,6 +18,7 @@ import ls from "local-storage";
 const Signin = props => {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
+  const [isLoggedIn, setBoolLogin] = useState(false);
   const handleEmailSubmit = event => {
     event.preventDefault();
     // axios.post("/api/auth/signup");
@@ -28,16 +30,26 @@ const Signin = props => {
       .then(res => {
         console.log(res.data);
         if (res) {
-          const userID = res.data.token;
-          tokenDidMount(userID);
+          const token = res.data.token;
+          setBoolLogin(true);
+          tokenDidMount(token);
         }
       })
       .catch(err => console.log("Unable to save email ", err));
   };
 
   const tokenDidMount = token => {
-    ls.set("Authorization", token);
+    ls.set(token);
   };
+  if (isLoggedIn) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/profile"
+        }}
+      />
+    );
+  }
   return (
     <div className="signupBackground">
       <Container className="homeContainer">

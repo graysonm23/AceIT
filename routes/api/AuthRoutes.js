@@ -11,24 +11,7 @@ router
   .post(userController.create);
 
 // Matches with "/api/auth/:id"
-// router
-//   .route("/api/auth/:id")
-//   .all(function(req, res, next) {
-//     jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
-//       if (err) {
-//         res.status(403); //forbidden error
-//         console.log(err);
-//       } else {
-//         next();
-//       }
-//     });
-//   })
-//   .get(parseToken, function(req, res) {
-//   userController.findById(req.body.id, res, function(dbUserId){
-//     res.json(dbUserId);
-//   })
-//   })
-//   .put(userController.update)
+router.route("/api/auth/board-editor").post(jwtVerify);
 
 router.route("/api/auth/signin").post(async (req, res) => {
   const email = req.body.email;
@@ -92,7 +75,7 @@ router.route("/api/auth/signup").post(function(req, res) {
 
 function parseToken(request, response, next) {
   //get auth header value
-  var bearerHeader = request.headers["authorization"];
+  var bearerHeader = request.body.token;
   console.log("This is bearer header ", bearerHeader);
 
   //check if bearer is undefined
@@ -115,27 +98,25 @@ function parseToken(request, response, next) {
   }
 }
 
-function jwtVerify(req, res, next) {
+function jwtVerify(req, res) {
   console.log("verifying token...");
-  jwt.verify(req.token, process.env.SECRET_KEY, function(err, authData) {
+  jwt.verify(req.body.token, process.env.SECRET_KEY, function(err, authData) {
     if (err) {
       console.log(
         "This is your token in JWT Verify " + JSON.stringify(req.token)
       );
       console.log("This is your error JWT Verify logic " + err);
-      res.redirect("login"); //forbidden error
+      //forbidden error
     } else {
-      db.Users.findOne({
-        where: {
-          user_id: authData.user
-        }
-      }).then(function(response) {
+      console.log({ authData });
+      userController.findById(authData.userid).then(function(response) {
+        console.log({ response });
         console.log("JWT has Verified your token");
-        return res.json(response);
+        return response;
       });
     }
   });
-  next();
+  // next();
 }
 
 module.exports = router;
