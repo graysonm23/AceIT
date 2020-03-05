@@ -78,6 +78,9 @@ const Signin = props => {
                     placeholder="Please place password here"
                     onChange={e => setPassword(e.target.value)}
                   />
+                  <p>
+                    Don't have an account? Click <a href="/signup">here</a>
+                  </p>
                   <button type="submit">Login</button>
                 </Form>
               </CardBody>
