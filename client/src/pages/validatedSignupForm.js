@@ -2,16 +2,26 @@ import React from "react";
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import API from "../utils/API";
 
 const ValidatedSignupForm = () => (
   <Formik
-    initialValues={{ email: "", password: "" }}
+    initialValues={{ email: "", password: "", name: "", changepassword: "" }}
     onSubmit={(values, { setSubmitting }) => {
-      setTimeout(() => {
-        console.log("Logging in", values);
-        setSubmitting(false);
-      }, 500);
+      setSubmitting(false);
+      // console.log(JSON.stringify(values.email, null, 2));
+      const userObj = {
+        email: values.email,
+        password: values.password,
+        name: values.name
+      };
+      API.signUpRoute(userObj)
+        .then(res => {
+          // console.log(res);
+        })
+        .catch(err => console.log("Unable to save email ", err));
     }}
+    //********Using Yum for validation********/
 
     validationSchema={Yup.object().shape({
       name: Yup.string()

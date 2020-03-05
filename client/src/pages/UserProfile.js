@@ -18,6 +18,7 @@ import {
 } from "reactstrap";
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
+import $ from "jquery";
 
 function Profile() {
   const [image, setImage] = useState([]);
@@ -29,9 +30,14 @@ function Profile() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [saved, setSaved] = useState(false);
+  const [hide, setHide] = useState(false);
   useEffect(() => {
     imageDidMount();
   });
+  const userDidMount = () => {
+    setSaved(true);
+  };
   const imageDidMount = () => {
     // API.getBooks(image)
     //   .then(res => {
@@ -57,11 +63,16 @@ function Profile() {
     string = s[0];
     return string;
   };
-  // const handleUserInfoSubmit = event => {
-  //   event.preventDefault();
-  //   setEditor(false);
-  //   console.log(name, password, email);
-  // };
+  const openImageHandler = event => {
+    $(
+      "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
+    ).click();
+  };
+  const handleUserInfoSubmit = event => {
+    event.preventDefault();
+    setEditor(false);
+    console.log(name, password, email);
+  };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -72,12 +83,12 @@ function Profile() {
     setEditor(!editor);
   };
   return (
-    <div className="homepage">
+    <div className="signupBackground">
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">
-            {name.length ? (
-              <h1>{nameHandler(name)}'s Settings</h1>
+            {name.length && saved ? (
+              <h1>{nameHandler(name)}'s Profile</h1>
             ) : (
               <h1 className="profileTitle">My Profile</h1>
             )}
@@ -92,6 +103,7 @@ function Profile() {
                       {image.length ? (
                         <div className="imgDiv">
                           <img
+                            onClick={openImageHandler}
                             className="userPicture"
                             alt="user pic"
                             src={image}
@@ -105,6 +117,7 @@ function Profile() {
                         publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
                         // do not store images on development
                         // doNotStore
+                        onHide={hide ? $("#userFile").hide() : ""}
                         crop
                         imagesOnly
                         multipleMax={1}
@@ -121,26 +134,33 @@ function Profile() {
                               console.log("File uploaded: ", info);
                               setImage([info.cdnUrl]);
                             });
+                            if (
+                              file.progress(info => {
+                                return (info = info.progress);
+                              }) === 1
+                            ) {
+                              setHide(true);
+                            }
                           }
                         }}
                       />
                     </div>
-                    <button
+                    {/* <button
                       className="profileButton"
                       onClick={handleImageSubmit}
                       type="submit"
                     >
                       Save Image
-                    </button>
+                    </button> */}
                   </CardBody>
                 </CardBody>
-                {/* <button
+                <button
                   className="profileButton"
                   onClick={handleImageSubmit}
                   type="submit"
                 >
                   Save Image
-                </button> */}
+                </button>
               </Card>
               <Card className="userCard">
                 <CardBody className="userCardBody">
@@ -150,9 +170,6 @@ function Profile() {
                   ) : (
                     <div className="boardsHeader">
                       <h2>You have no boards right now</h2>
-                      <button className="createBoardButton">
-                        Create Board
-                      </button>
                     </div>
                   )}
                   <CardBody className="userCardInnerBody">
@@ -184,6 +201,7 @@ function Profile() {
                     )}
                   </CardBody>
                 </CardBody>
+                <button className="createBoardButton">Create Board</button>
               </Card>
               <Card className="userInformationCard">
                 <CardBody className="userCardBody">
@@ -192,14 +210,98 @@ function Profile() {
                   </CardTitle>
                   <CardBody className="userCardInnerBody">
                     <div>
-                      <form>
-                        <ValidatedInfoForm />
-                      </form>
-                      <span
-                        tabIndex={0}
-                        onClick={toggleEditor}
-                        class="fas fa-pen-square toggle-editor"
-                      ></span>
+                      <Form onSubmit={handleUserInfoSubmit}>
+                        <InputGroup
+                          autoComplete="new-password"
+                          className="inputGroup"
+                        >
+                          <span
+                            tabIndex={0}
+                            onClick={() => {
+                              toggleEditor();
+                              {
+                                !name.length ? setSaved(false) : setSaved(true);
+                              }
+                            }}
+                            class="fas fa-pen-square toggle-editor"
+                          ></span>
+                          <label>Name: </label>
+                          <Input
+                            autoComplete="new-password"
+                            autoCapitalize="on"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputName"
+                            onChange={e => setName(e.target.value)}
+                            value={name}
+                            type="name"
+                          />
+                          <label>Email: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputEmail"
+                            onChange={e => setEmail(e.target.value)}
+                            value={email}
+                            type="email"
+                          />
+                          <label>Password: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputPassword"
+                            onChange={e => setPassword(e.target.value)}
+                            value={password}
+                            type={passwordVisible ? "text" : "password"}
+                          />
+                          {password.length ? (
+                            <span
+                              tabIndex={0}
+                              onFocus={togglePasswordVisibility}
+                              toggle="#password-field"
+                              className="fa fa-fw fa-eye field-icon toggle-password"
+                            ></span>
+                          ) : (
+                            ""
+                          )}
+                          <label>Confirm Password: </label>
+                          <Input
+                            autoComplete="new-password"
+                            readOnly={editor ? false : "readonly"}
+                            className="inputPassword"
+                            onChange={e => setConfirmPassword(e.target.value)}
+                            value={confirmPassword}
+                            type={passwordVisibleConfirm ? "text" : "password"}
+                          />
+                          {confirmPassword.length ? (
+                            <span
+                              tabIndex={0}
+                              onFocus={togglePasswordVisibilityConfirm}
+                              toggle="#password-field"
+                              className="fa fa-fw fa-eye field-icon toggle-password-2"
+                            ></span>
+                          ) : (
+                            ""
+                          )}
+                        </InputGroup>
+                        {editor ? (
+                          <Button
+                            className="saveInfoButton"
+                            onClick={() => {
+                              handleUserInfoSubmit();
+                              setSaved(true);
+                            }}
+                            // disabled={
+                            //   name && email && password && confirmPassword
+                            //     ? "false"
+                            //     : "true"
+                            // }
+                          >
+                            Save
+                          </Button>
+                        ) : (
+                          ""
+                        )}
+                      </Form>
                     </div>
                   </CardBody>
                 </CardBody>

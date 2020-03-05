@@ -11,9 +11,16 @@ import {
 } from "reactstrap";
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
+import $ from "jquery";
 
 function Home() {
   const [image, setImage] = useState([]);
+  const [hide, setHide] = useState(false);
+  const openImageHandler = event => {
+    $(
+      "button.uploadcare--widget__button.uploadcare--widget__button_type_open"
+    ).click();
+  };
   const handleImageSubmit = event => {
     event.preventDefault();
     console.log("images ", image);
@@ -26,26 +33,45 @@ function Home() {
     }
   };
   return (
-    <div className="homepage">
+    <div path="Settings" className="homepage">
       <Container className="homeContainer">
         <Row className="homeRow">
           <Col className="homeCol">
             <Card className="homeCard">
               <CardBody>
                 <CardTitle className="homeCardTitle">
-                  <h1>Settings</h1>
+                  {image.length > 0 ? (
+                    <h1 className="success">Success!</h1>
+                  ) : (
+                    <h1>Upload profile picture</h1>
+                  )}
                 </CardTitle>
                 <CardBody className="homeCardBody">
-                  {image.length > 0 ? (
-                    <span className="success">Success!</span>
-                  ) : (
-                    <p>Upload profile picture</p>
-                  )}
-                  <div id="widget">
-                    <label htmlFor="file">Your file:</label>{" "}
+                  <div id="userPWidget">
+                    {image.length ? (
+                      <div className="imgDiv">
+                        <img
+                          tabIndex={0}
+                          onClick={openImageHandler}
+                          className="userPicture"
+                          alt="user pic"
+                          src={image}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
                     <Widget
                       publicKey={process.env.UPLOADCARE_PUBLIC_KEY}
-                      id="file"
+                      // do not store images on development
+                      // doNotStore
+                      onHide={hide ? $("#userFile").hide() : ""}
+                      crop
+                      imagesOnly
+                      multipleMax={1}
+                      imageShrink="400x400"
+                      id="userFile"
                       onFileSelect={file => {
                         console.log("File changed: ", file);
 
@@ -55,8 +81,15 @@ function Home() {
                           );
                           file.done(info => {
                             console.log("File uploaded: ", info);
-                            setImage([info.originalUrl]);
+                            setImage([info.cdnUrl]);
                           });
+                          if (
+                            file.progress(info => {
+                              return (info = info.progress);
+                            }) === 1
+                          ) {
+                            setHide(true);
+                          }
                         }
                       }}
                     />

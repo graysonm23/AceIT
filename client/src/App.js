@@ -7,23 +7,20 @@ import Card from "./components/card";
 import Settings from "./pages/NewUS";
 import Profile from "./pages/UserProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Signup from "./pages/signup/signup.js";
-import Home from "./pages/NewUS";
+import Signup from "./pages/signup";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/userprofile" component={Profile} />
-          <Route exact path="/settings" component={Settings} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/card" component={Card} />
-          <Route exact path="/" component={Login} />
-          <Route component={NoMatch} />
-        </Switch>
-      </div>
+      <Nav />
+      <Switch>
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/settings" component={Settings} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/cards" component={Card} />
+        <Route exact path="/" component={Login} />
+        <Route component={NoMatch} />
+      </Switch>
     </Router>
   );
 }
