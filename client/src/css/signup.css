@@ -1,12 +1,13 @@
-#buttonCancel {
-  float: left;
-  margin-left: 18%;
-  margin-top: 10%;
+.navHeader {
+  font-weight: bolder;
+  font-size: 3rem;
+  margin-top: 2px;
+  color: rgb(61, 61, 61);
 }
-#buttonSubmit {
-  float: right;
-  margin-right: 18%;
-  margin-top: 10%;
+
+.signupBackground {
+  height: 100vh;
+  width: 100vw;
 }
 
 .signup-input {
@@ -83,6 +84,7 @@ button {
   color: white;
   border: 1px solid #0addbf;
   background-color: 250ms;
+
 }
 
 button:hover {
@@ -91,9 +93,8 @@ button:hover {
   color: #0addbf;
 }
 
-/* .signUpCardBody {
+.signUpCardBody {
   text-align: center;
-  min-height: 700px;
 }
 
 .SignupCol {
@@ -102,11 +103,22 @@ button:hover {
   height: 100%;
 }
 
+.signupTitle {}
+
 .SignupCard {
-  max-width: 40vw;
-  height: 85vh;
-  top: 115px;
+  width: 600px;
+  height: auto top;
   left: 50%;
+  margin-top: 15vh;
   transform: translate(-50%, 10%);
   position: relative;
-} */
+}
+
+.saveInfoButton {
+  padding: 10px 15px;
+  background-color: #0addbf;
+  color: white;
+  border: 1px solid #0addbf;
+  background-color: 250ms;
+  margin-top: 10px;
+}

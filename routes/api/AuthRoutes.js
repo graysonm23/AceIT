@@ -2,6 +2,7 @@ const router = require("express").Router();
 const userController = require("../../controllers/userController");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 // Matches with "/api/auth"
 router
@@ -29,46 +30,47 @@ router
 //   })
 //   .put(userController.update)
 
-router.route("/api/auth/signin").post(function(req, res) {
-  async () => {
-    const email = req.body.email;
-    const promise = userController.findByEmail(email, dbUsers);
-    await promise;
-    if (dbUsers) {
-      //if account exists
-      bcrypt.compare(req.body.password, dbUsers.password, function(
-        //compare hashed password
-        err,
-        response
-      ) {
-        if (err) {
+router.route("/api/auth/signin").post(async (req, res) => {
+  const email = req.body.email;
+  const user = await userController.findByEmail(email);
+  console.log("signing in");
+  console.log(email);
+  console.log("user", user);
+  if (user) {
+    //if account exists
+    bcrypt.compare(req.body.password, user.password, function(
+      //compare hashed password
+      err,
+      response
+    ) {
+      if (err) {
+        return res.json({
+          success: false,
+          message: "passwords do not match"
+        });
+      }
+      if (response) {
+        //if passwords match
+        // res.json(dbUsers);
+        var userid = user._id;
+        console.log(user);
+        jwt.sign(
+          { userid: userid },
+          process.env.SECRET_KEY,
+          { expiresIn: "10 days" } /*sets token to expire in 30 seconds*/,
+          function(err, token) {
+            console.log(err);
+            res.json({ token: token, message: "success" });
+          }
+        );
 
-          return res.json({
-            success: false,
-            message: "passwords do not match"
-          });
-        }
-        if (response) {
-          //if passwords match
-          // res.json(dbUsers);
-          var user = dbUsers._id;
-          jwt.sign(
-            { user: user },
-            process.env.SECRET_KEY,
-            { expiresIn: "10 days" } /*sets token to expire in 30 seconds*/,
-            function(err, token) {
-              res.json({ token: token, message: "success" });
-            }
-          );
-
-          // res.render("userprofile", { msg: "Email has been sent" });
-        }
-      });
-    } else {
-      //if account does not exist
-      return res.json({ success: false, message: "no account found" });
-    }
-  };
+        // res.render("userprofile", { msg: "Email has been sent" });
+      }
+    });
+  } else {
+    //if account does not exist
+    return res.json({ success: false, message: "no account found" });
+  }
 });
 
 router.route("/api/auth/signup").post(function(req, res) {
@@ -81,7 +83,8 @@ router.route("/api/auth/signup").post(function(req, res) {
     bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
       if (err) {
         throw err;
-      } console.log(hash)
+      }
+      console.log(hash);
       userController.create(name, email, hash);
     });
   });
