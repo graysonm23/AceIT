@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import API from "../../utils/API";
 import ls from "local-storage";
@@ -15,14 +15,18 @@ const Signin = props => {
     };
     API.signInRoute(userObj)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         if (res) {
-          const userID = res;
+          const userID = res.data.token;
+          tokenDidMount(userID);
         }
       })
       .catch(err => console.log("Unable to save email ", err));
   };
 
+  const tokenDidMount = token => {
+    ls.set("Authorization", token);
+  };
   return (
     <div>
       <Form className="loginForm" onSubmit={handleEmailSubmit}>
