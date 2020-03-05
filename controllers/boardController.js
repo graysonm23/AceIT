@@ -14,18 +14,18 @@ module.exports = {
   },
   create: function(req, res) {
     db.Board.create({
-      label: req.body.label,
-      icon: req.body.icon,
-      background_color: req.body.background_color,
-      border_color: req.body.border_color,
-      rows: req.body.rows,
-      cols: req.body.cols
+      label: req.label,
+      icon: req.boardIcon,
+      background_color: req.background_color,
+      border_color: req.border_color,
+      rows: req.rows,
+      cols: req.cols
     })
       .then(dbboardCreate => {
         console.log("This is res.body: ", res.body);
         console.log("This is req.body: ", req.body);
         console.log("This is dbModel: ", dbboardCreate);
-        res.json(dbboardCreate);
+        return dbboardCreate;
       })
       .catch(err => res.status(422).json(err));
   },

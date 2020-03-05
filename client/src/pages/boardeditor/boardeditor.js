@@ -29,6 +29,8 @@ import icon5 from "../../images/no-icon.png";
 import icon6 from "../../images/run-icon.png";
 import icon7 from "../../images/music-icon.png";
 import icon8 from "../../images/drink-icon.png";
+import API from "../../utils/API";
+import ls from "local-storage";
 
 const dummyArr = [
   {
@@ -70,6 +72,12 @@ const Boardeditor = props => {
   const [modal, setModal] = useState(false);
   const [backdrop, setBackdrop] = useState(true);
   const [keyboard, setKeyboard] = useState(true);
+  const [label, setLabel] = useState([]);
+  const [boardIcon, setIcon] = useState([]);
+  const [background_color, setBGColor] = useState([]);
+  const [border_color, setBorderColor] = useState([]);
+  const [rows, setRows] = useState([]);
+  const [cols, setCols] = useState([]);
 
   const toggle = () => setModal(!modal);
 
@@ -79,6 +87,21 @@ const Boardeditor = props => {
       value = JSON.parse(value);
     }
     setBackdrop(value);
+  };
+  const handleCreateBoardAPI = e => {
+    e.preventDefault();
+    const tokenObj = {
+      token: ls.get("Authorization")
+    };
+    console.log(tokenObj.token);
+    API.boardEditorRoute(tokenObj)
+      .then(res => {
+        if (res) {
+          console.log(res);
+          // setBoolToken(true);
+        }
+      })
+      .catch(err => console.log(err));
   };
 
   const changeKeyboard = e => {

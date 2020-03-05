@@ -18,6 +18,8 @@ import {
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
 import $ from "jquery";
+import ls from "local-storage";
+import { Redirect } from "react-router-dom";
 import CreateBoardModal from "./boardeditor/modal/modal";
 
 function Profile() {
@@ -32,6 +34,7 @@ function Profile() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [saved, setSaved] = useState(false);
   const [hide, setHide] = useState(false);
+  const [tokenIsValid, setBoolToken] = useState(false);
   useEffect(() => {
     imageDidMount();
   });
@@ -58,6 +61,22 @@ function Profile() {
     //     .catch(err => console.log("Unable to save image ", err));
     // }
   };
+
+  const handleCreateBoard = e => {
+    e.preventDefault();
+    const tokenObj = {
+      token: ls.get("Authorization")
+    };
+    console.log(tokenObj.token);
+    API.boardEditorRoute(tokenObj)
+      .then(res => {
+        if (res) {
+          console.log(res);
+          setBoolToken(true);
+        }
+      })
+      .catch(err => console.log(err));
+  };
   const nameHandler = string => {
     let s = string.split(/(?<=^\S+)\s/);
     string = s[0];
@@ -82,6 +101,7 @@ function Profile() {
   const toggleEditor = () => {
     setEditor(!editor);
   };
+
   return (
     <div className="signupBackground">
       <Container className="userContainer">
