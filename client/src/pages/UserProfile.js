@@ -83,7 +83,7 @@ function Profile() {
     setEditor(!editor);
   };
   return (
-    <div className="homepage">
+    <div className="signupBackground">
       <Container className="userContainer">
         <Row className="userRow">
           <Col className="userCol">

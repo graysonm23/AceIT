@@ -117,7 +117,7 @@ export default function MiniDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className="pageHeading" variant="h6" noWrap>
+          <Typography className="pageHeading" variant="h3" noWrap>
             {window.location.pathname === "/profile" ? <h6>Profile</h6> : ""}
             {window.location.pathname === "/settings" ? <h6>Settings</h6> : ""}
             {window.location.pathname === "/cards" ? <h6>Cards</h6> : ""}
