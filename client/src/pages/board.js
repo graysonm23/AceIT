@@ -42,7 +42,7 @@ function Board() {
       </div>
       <Container className="ContainerBoard">
         {board.map((card, index) => (
-          <Card>Card {index}</Card>
+          <Card>Card {card[index]}</Card>
         ))}
       </Container>
     </div>
