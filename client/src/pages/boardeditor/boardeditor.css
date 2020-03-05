@@ -1,8 +1,41 @@
- .cardStyle{
-     background-color:#0ADDBF;
-     padding: 25px;
- }
+.boardItem {
+    margin-bottom: 40px;
+}
 
- .bodyCard {
-     background-color: #0ADDBF;
- }
+.boardItem {
+    box-shadow: 0 4px 8px 0 rgba(46, 46, 46, 0.5);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.boardItem:hover {
+    box-shadow: 0 8px 16px 0 rgba(46, 46, 46, 0.5);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.02);
+}
+
+.boardItemBody {}
+
+.boardItemTitle {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2rem;
+    color: white;
+
+}
+
+
+.boardCol {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.boardRow {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: 70px !important;
+    margin-top: 100px;
+}

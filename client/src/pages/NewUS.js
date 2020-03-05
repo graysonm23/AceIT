@@ -12,7 +12,6 @@ import {
 import API from "../utils/API";
 import { Widget } from "@uploadcare/react-widget";
 import $ from "jquery";
-import KeyboardEventHandler from "react-keyboard-event-handler";
 
 function Home() {
   const [image, setImage] = useState([]);
