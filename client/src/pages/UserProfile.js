@@ -145,13 +145,6 @@ function Profile() {
                         }}
                       />
                     </div>
-                    {/* <button
-                      className="profileButton"
-                      onClick={handleImageSubmit}
-                      type="submit"
-                    >
-                      Save Image
-                    </button> */}
                   </CardBody>
                 </CardBody>
                 <button
