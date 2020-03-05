@@ -7,10 +7,16 @@ module.exports = {
       .then(dbUserAll => res.json(dbUserAll))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
-    db.User.findById(req.params.id)
-      .then(dbUserId => res.json(dbUserId))
-      .catch(err => res.status(422).json(err));
+  findById: function(id) {
+    return new Promise(function(resolve, reject) {
+      db.User.findOne({ _id: id }).exec(function(err, dbFindID) {
+        if (err) {
+          reject(err);
+        }
+        console.log(dbFindID);
+        resolve(dbFindID);
+      });
+    });
   },
   findByEmail: function(email) {
     return new Promise(function(resolve, reject) {
