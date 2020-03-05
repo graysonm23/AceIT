@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import API from "../../utils/API";
+import ls from "local-storage";
 
 const Signin = props => {
   const [email, setEmail] = useState([]);
@@ -8,17 +9,20 @@ const Signin = props => {
   const handleEmailSubmit = event => {
     event.preventDefault();
     // axios.post("/api/auth/signup");
-    console.log(event);
     const userObj = {
       email: email,
       password: password
     };
-    API.signUpRoute(userObj)
+    API.signInRoute(userObj)
       .then(res => {
         console.log(res);
+        if (res) {
+          const userID = res;
+        }
       })
       .catch(err => console.log("Unable to save email ", err));
   };
+
   return (
     <div>
       <Form className="loginForm" onSubmit={handleEmailSubmit}>

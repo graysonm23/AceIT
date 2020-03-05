@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "../css/signup.css";
-import API from "../utils/API";
+import API from "../../utils/API";
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
