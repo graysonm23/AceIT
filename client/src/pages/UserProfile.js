@@ -233,7 +233,7 @@ function Profile() {
                             onClick={() => {
                               toggleEditor();
                               {
-                                !name.length ? setSaved(false) : setSaved(true);
+                                !name ? setSaved(false) : setSaved(true);
                               }
                             }}
                             class="fas fa-pen-square toggle-editor"

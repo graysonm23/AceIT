@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 // Matches with "/api/auth"
