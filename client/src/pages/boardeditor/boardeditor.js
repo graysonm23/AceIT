@@ -89,6 +89,11 @@ const Boardeditor = props => {
     }
     setBackdrop(value);
   };
+  const speakHandler = value => {
+    const synth = window.speechSynthesis;
+    const speakIt = new SpeechSynthesisUtterance(value);
+    synth.speak(speakIt);
+  };
   const handleCreateBoardAPI = e => {
     e.preventDefault();
     const tokenObj = {
@@ -116,7 +121,10 @@ const Boardeditor = props => {
             <Col lg={2} className="boardCol">
               <Card
                 tag="a"
-                onClick=""
+                value={cardItem.title}
+                onClick={() => {
+                  speakHandler(cardItem.title);
+                }}
                 style={{ cursor: "pointer" }}
                 className="boardItem"
               >
