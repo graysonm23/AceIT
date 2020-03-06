@@ -37,18 +37,18 @@ function Profile() {
   const [tokenIsValid, setBoolToken] = useState(false);
   useEffect(() => {
     imageDidMount();
-    userDidMount();
+    // userDidMount();
   });
-  const userDidMount = () => {
-    setSaved(true);
-    API.signInRoute(name, email, password)
-      .then(res => {
-        setEmail(res.data.email);
-        setPassword(res.data.password);
-        setName(res.data.name);
-      })
-      .catch(err => console.log("Unable to load user ", err));
-  };
+  // const userDidMount = () => {
+  //   setSaved(true);
+  //   API.signInRoute(name, email, password)
+  //     .then(res => {
+  //       setEmail(res.data.email);
+  //       setPassword(res.data.password);
+  //       setName(res.data.name);
+  //     })
+  //     .catch(err => console.log("Unable to load user ", err));
+  // };
   const imageDidMount = () => {};
   const handleImageSubmit = event => {
     event.preventDefault();
