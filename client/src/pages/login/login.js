@@ -45,7 +45,7 @@ const Signin = props => {
     return (
       <Redirect
         to={{
-          pathname: "/profile"
+          pathname: "/board"
         }}
       />
     );
