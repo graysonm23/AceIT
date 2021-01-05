@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@trendmicro/react-sidenav": "^0.5.0",
     "@uploadcare/react-widget": "^1.2.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
     "email-validator": "^2.0.4",
